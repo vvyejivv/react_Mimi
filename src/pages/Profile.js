@@ -8,7 +8,7 @@ function Profile(){
         {id: 5, title: '다섯 번째 게시물', content: '세 번째 게시물입니다.'},
       ];
       
-    return <div style={{width:"1920px"}}>
+    return <div>
         <div style={{
             width:"1280px",
             height:"800px" , 
@@ -54,7 +54,7 @@ function Profile(){
                     <div  style={{
                             marginTop :"10px",
                 }}>
-                        <table>
+                        {/* <table>
                             <tr>
                                 <th>20</th>
                                 <th>100</th>
@@ -65,7 +65,7 @@ function Profile(){
                                 <td>팔로워</td>
                                 <td>팔로잉</td>
                             </tr>
-                        </table>
+                        </table> */}
                     </div>
                 </div>
             </div>
