@@ -18,7 +18,6 @@ function Login(){
                 if(jsonData.result == "success"){
                     await sessionStorage.setItem('userId', userId);     // sessionStrorage에 저장
                     window.location.href = `http://localhost:3000/Posts?userId=${userId}`;
-
                 }else{
                     alert("로그인이 실패했습니다. 다시 시도하세요.");
                     return;
