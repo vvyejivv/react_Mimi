@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import Setting from './pages/Setting';
 import Profile from './pages/Profile';
 import UserJoin from './pages/UserJoin';
+import UserInfo from './pages/UserInfo';
+import Posts from './pages/Posts';
 import Navbar from './components/Navbar';
 import { Routes, Route, BrowserRouter as Router} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css' //다른곳에서도 bootstrap 문법 사용 가능
@@ -21,6 +23,8 @@ function App() {
         <Route path="/Setting" element={<Setting />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/UserJoin" element={<UserJoin />}></Route>
+        <Route path="/UserInfo" element={<UserInfo />}></Route>
+        <Route path="/Posts" element={<Posts />}></Route>
       </Routes>
     </Router>
     </div>
