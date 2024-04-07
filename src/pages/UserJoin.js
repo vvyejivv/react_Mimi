@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { json } from "react-router-dom";
+import './UserJoin.css';
 
 function UserJoin() {
     const [userId, setUserId] = useState("");
@@ -10,109 +11,102 @@ function UserJoin() {
     const [email, setEmail] = useState("");
     let [idCheckText, setIdCheckText] = useState(""); //아이디 중복확인 문구
 
-    const fnUserId = (e)=>{
+    const fnUserId = (e) => {
         setUserId(e.target.value);
     }
-    const fnUserPwd = (e)=>{
+    const fnUserPwd = (e) => {
         setPwd(e.target.value);
     }
-    const fnUserName = (e)=>{
+    const fnUserName = (e) => {
         setUserName(e.target.value);
     }
-    const fnUserBirth = (e)=>{
+    const fnUserBirth = (e) => {
         setBirth(e.target.value);
     }
-    const fnUserPhone = (e)=>{
+    const fnUserPhone = (e) => {
         setPhone(e.target.value);
     }
-    const fnUserEmail = (e)=>{
+    const fnUserEmail = (e) => {
         setEmail(e.target.value);
     }
-    const fnUserJoin = ()=>{
-        async function fetchUserJoin(){
+    const fnUserJoin = () => {
+        async function fetchUserJoin() {
             try {
                 let str = `userId=${userId}&pwd=${pwd}&name=${userName}&birth=${birth}&phone=${phone}&email=${email}`;
                 const response = await fetch(`http://localhost:4000/userJoin.dox?${str}`);
                 const jsonData = await response.json();
-                if(jsonData.result == "success"){
+                if (jsonData.result == "success") {
                     alert(jsonData.msg);
                     window.location.href = "http://localhost:3000/login";
-                }else if(jsonData.result == "fail"){
+                } else if (jsonData.result == "fail") {
                     alert("다시 시도 바랍니다.");
                     return;
                 }
 
-                
+
             } catch (error) {
                 console.error("에러!");
             }
-           } 
-           fetchUserJoin();
+        }
+        fetchUserJoin();
     }
-    useEffect(()=>{
-        async function fetchUserId(){
+    useEffect(() => {
+        async function fetchUserId() {
             try {
                 const response = await fetch(`http://localhost:4000/idCheck.dox?userId=${userId}`);
                 const jsonData = await response.json();
                 setIdCheckText(jsonData.result);
-                
+
             } catch (error) {
                 console.error("error!");
             }
-           } 
-           fetchUserId();
-    },[userId]);
+        }
+        fetchUserId();
+    }, [userId]);
 
-    return <div style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "0px auto",
-    }}>
-        <div>
-            <div>회원가입</div>
-            <div style={{
-                margin: "15px 0px",
-            }}>
-                <span>아이디 : </span>
-                <input type="text" onChange={fnUserId} value={userId}></input>
-                {userId != "" ? <div>{idCheckText}</div> : <div><span>*</span> 아이디를 입력해주세요!</div>}
+    return <div id="joinContainer">
+        <div id="joinBox">
+            <div id="joinTitle">
+                <div id="joinLogo">Mimi</div>
+                <div id="pointLogo"></div>
             </div>
-            <div style={{
-                margin: "15px 0px",
-            }}>
-                <span>비밀번호 : </span>
-                <input type="password" onChange={fnUserPwd} value={pwd}></input>
-                {pwd =="" && <div><span>*</span> 비밀번호를 입력해주세요!</div>} 
-            </div>
-            <div style={{
-                margin: "15px 0px",
-            }}>
-                <span>이름 : </span>
-                <input type="text"  onChange={fnUserName} value={userName}></input>
-            </div>
-            <div style={{
-                margin: "15px 0px",
-            }}>
-                <span>생년월일 : </span>
-                <input type="text" placeholder="ex : 19971025" onChange={fnUserBirth} value={birth}></input>
-            </div>
-            <div style={{
-                margin: "15px 0px",
-            }}>
-                <span>연락처 : </span>
-                <input type="text" placeholder="ex : 0100000000"  onChange={fnUserPhone} value={phone}></input>
-                <div style={{
-                    margin: "15px 0px",
-                }}>
-                    <span>이메일 : </span>
-                    <input type="text" placeholder="ex : abcd@abcd.com"  onChange={fnUserEmail} value={email}></input>
+            <div id="joinContentsBox">
+                <div id="joinTxt">회원가입</div>
+                <div id="joinIdBox">
+                    <div id="joinIdTxt">아이디 </div>
+                    <input type="text" onChange={fnUserId} value={userId} placeholder="아이디를 입력하세요."></input>
+                    {userId != "" ? <div className="idCheckTxt">{idCheckText}</div> : <div className="idCheckTxt">아이디를 입력해주세요.</div>}
                 </div>
-                <div>
-                    <button onClick={fnUserJoin}>가입하기</button>
-                    <button onClick={()=>{
-                                window.location.href = "http://localhost:3000/";
-                            }}>취소</button>
+                <div id="joinPwdBox">
+                    <div id="joinPwdTxt">비밀번호 </div>
+                    <input type="password" onChange={fnUserPwd} value={pwd} placeholder="비밀번호를 입력하세요."></input>
+                    {pwd == "" && <div className="idCheckTxt">비밀번호를 입력해주세요.</div>}
+                </div>
+                <div id="joinNameBox">
+                    <div id="joinNameTxt">이름</div>
+                    <input type="text" onChange={fnUserName} value={userName} placeholder="이름을 입력하세요."></input>
+                </div>
+                <div id="joinBirthBox">
+                    <div id="joinBirthTxt">생년월일</div>
+                    <input type="text" placeholder="ex) 19971025" onChange={fnUserBirth} value={birth}></input>
+                </div>
+                <div id="joinPhoneBox">
+                    <div id="joinPhoneTxt">연락처</div>
+                    <input type="text" placeholder="ex) 0100000000" onChange={fnUserPhone} value={phone}></input>
+                </div>
+                <div id="joinEmailBox">
+                    <div id="joinEmailTxt">이메일</div>
+                    <input type="text" placeholder="ex) abcd@abcd.com" onChange={fnUserEmail} value={email}></input>
+                </div>
+                <div id="joinSaveBox">
+                   <div id="joinSaveBtn"> 
+                        <button onClick={fnUserJoin}>가입하기</button>
+                    </div>
+                    <div id="joinCancelBtn">
+                        <button onClick={() => {
+                            window.location.href = "http://localhost:3000/";
+                        }}>취소</button>
+                    </div>
                 </div>
             </div>
         </div>

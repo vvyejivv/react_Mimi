@@ -1,0 +1,209 @@
+#joinContainer{
+    width: 1920px;
+    height: 1654px;
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#joinBox{
+    width: 600px;
+    height: 1358px;
+}
+#joinTitle{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+#joinLogo{
+    width: 112px;
+    height: 50px;
+    font-size: 50px;
+    color: #F56363;
+    font-weight: 700;
+}
+#pointLogo{
+    width: 10px;
+    height: 10px;
+    background-color: #FFE895;
+    border-radius: 50px;
+}
+#joinContentsBox{
+    width: 600px;
+    height: fit-content;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    padding: 50px 50px;
+}
+#joinTxt{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+#joinIdBox{
+    width: 500px;
+    height: 122px;
+    margin-bottom: 50px;
+}
+#joinIdTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+}
+#joinIdBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+}
+::-webkit-input-placeholder { /* 웹킷 브라우저(크롬, 사파리 등)에서 작동 */
+    color: #9E9E9E;
+ }
+ .idCheckTxt{
+    color: #F56363;
+    font-size: 13px;
+    line-height: 13px;
+ }
+ #joinPwdBox{
+    width: 500px;
+    height: 99px;
+    margin-bottom: 50px;
+ }
+ #joinPwdTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+ }
+ #joinPwdBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+ }
+ #joinNameBox{
+    width: 500px;
+    height: 99px;
+    margin-bottom: 50px;
+ }
+ #joinNameTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+ }
+ #joinNameBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+ }
+ #joinBirthBox{
+    width: 500px;
+    height: 99px;
+    margin-bottom: 50px;
+ }
+ #joinBirthTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+ }
+ #joinBirthBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+ }
+ #joinPhoneBox{
+    width: 500px;
+    height: 99px;
+    margin-bottom: 50px;
+ }
+ #joinPhoneBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+ }
+ #joinPhoneTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+ }
+ #joinEmailBox{
+    width: 500px;
+    height: 99px;
+    margin-bottom: 60px;
+ }
+ #joinEmailTxt{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 15px;
+ }
+ #joinEmailBox input{
+    width: 500px;
+    height: 66px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+ }
+ #joinSaveBox{
+    width: 500px;
+    height: 146px;
+ }
+ #joinSaveBtn button{
+    width: 500px;
+    height: 68px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    background-color: #F56363;
+    padding: 20px 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+ }
+
+ #joinCancelBtn button{
+    width: 500px;
+    height: 68px;
+    border-radius: 10px;
+    border: 1px solid #EDEDED;
+    color: #5F5F5F;
+    background-color: #FFFFFF;
+    padding: 20px 25px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+ }

@@ -8,25 +8,33 @@ import UserJoin from './pages/UserJoin';
 import UserInfo from './pages/UserInfo';
 import Posts from './pages/Posts';
 import Navbar from './components/Navbar';
-import { Routes, Route, BrowserRouter as Router} from 'react-router-dom';
+import { useState } from "react";
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css' //다른곳에서도 bootstrap 문법 사용 가능
 
 function App() {
+  const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
   return (
-    <div style={{display :"flex"}}>
-    <Router>
-      <Navbar />
-      {/* 어떤 주소들을 가져갈지 정의 */}
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/Setting" element={<Setting />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-        <Route path="/UserJoin" element={<UserJoin />}></Route>
-        <Route path="/UserInfo" element={<UserInfo />}></Route>
-        <Route path="/Posts" element={<Posts />}></Route>
-      </Routes>
-    </Router>
+    <div>
+      <Router>
+        {/* {userId ? ( */}
+          <>
+            {/* <Navbar /> */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/setting" element={<Setting />} />
+              <Route path="/userJoin" element={<UserJoin />} />
+              <Route path="/userInfo" element={<UserInfo />} />
+              <Route path="/posts" element={<Posts />} />
+            </Routes>
+          </>
+        {/* ) : ( */}
+          <Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        {/* )} */}
+      </Router>
     </div>
   );
 }
