@@ -12,11 +12,11 @@ function Login() {
     const fnSubmit = () => {
         async function fetchUserId() {
             try {
-                if(userId == "" ){
+                if (userId == "") {
                     alert("아이디를 입력하세요.");
                     return;
                 }
-                if(pwd == ""){
+                if (pwd == "") {
                     alert("비밀번호를 입력하세요.");
                     return;
                 }
@@ -50,26 +50,26 @@ function Login() {
                         <div id="idBox">
                             <div><input type="text" placeholder="아이디" onChange={fnUserId} value={userId}></input></div>
                             {userId == "" ? <div id="idCheckMsg">아이디를 입력하세요.</div> : ""}
-                        </div>
+                        </div >
                         <div id="pwdBox">
                             <input type="password" placeholder="비밀번호" onChange={fnUserPwd} value={pwd} ></input>
                             {userId != "" ? <div id="idCheckMsg">비밀번호를 입력하세요. </div> : ""}
                         </div>
-                    </div>
-                    <div id="loginBtnBox">
-                        <button onClick={fnSubmit} id="loginBtn">로그인</button>
-                        <button onClick={() => {
-                            window.location.href = "http://localhost:3000/userJoin";
-                        }} id="joinBtn">회원가입</button>
-                    </div>
-                    <div id="findBox">
-                        <div id="idFind">아이디 찾기</div>
-                        <div id="findLine"> | </div>
-                        <div id="pwdFind">비밀번호 찾기</div>
-                    </div>
-                </div>
+                        <div id="loginBtnBox">
+                            <button onClick={fnSubmit} id="loginBtn">로그인</button>
+                            <button onClick={() => {
+                                window.location.href = "http://localhost:3000/userJoin";
+                            }} id="joinBtn">회원가입</button>
+                        </div>
+                        <div id="findBox">
+                            <div id="idFind">아이디 찾기</div>
+                            <div id="findLine"> | </div>
+                            <div id="pwdFind">비밀번호 찾기</div>
+                        </div>
+                    </div >
 
-            </div>
+                </div >
+            </div >
         </div>
     </div>
 }

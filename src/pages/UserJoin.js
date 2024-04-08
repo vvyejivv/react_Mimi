@@ -67,6 +67,7 @@ function UserJoin() {
     return <div id="joinContainer">
         <div id="joinBox">
             <div id="joinTitle">
+
                 <div id="joinLogo"><a href="http://localhost:3000/">Mimi</a></div>
                 <div id="pointLogo"></div>
             </div>
