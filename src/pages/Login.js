@@ -53,7 +53,7 @@ function Login() {
                         </div >
                         <div id="pwdBox">
                             <input type="password" placeholder="비밀번호" onChange={fnUserPwd} value={pwd} ></input>
-                            {userId != "" ? <div id="idCheckMsg">비밀번호를 입력하세요. </div> : ""}
+                            {userId != "" && pwd == "" ? <div id="idCheckMsg">비밀번호를 입력하세요. </div> : ""}
                         </div>
                         <div id="loginBtnBox">
                             <button onClick={fnSubmit} id="loginBtn">로그인</button>
