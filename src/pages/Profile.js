@@ -26,19 +26,12 @@ function Profile() {
         fetchList();
     }, []);
 
-    return <div>
-        <div style={{
-            width: "1280px",
-            height: "800px",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            margin: "0px auto",
-        }}
-        >
+    return <div style={{
+        marginLeft: "470px",
+    }}>
+        <div>
             {/* 프로필 박스 */}
             <div style={{
-                width: "1280px",
-                height: "200px",
                 display: "flex",
             }}>
                 {/* 프로필 사진 박스 */}

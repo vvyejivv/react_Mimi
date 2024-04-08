@@ -22,33 +22,153 @@ body{
   margin: 0px;
 }
 
-
 /* Navbar */
 #sidebar{
-  width: 350px;
-  height: 1000px;
-  background-color: #f7f7f7;
-  border-right: solid 1px #e3e3e3;
+  width: 470px;
+  height: 1080px;
+  background-color: #F7F7F7;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
-/* 설정 */
-#sidebar > * {
-  padding-left: 2rem;
-  padding-right: 2rem;
+
+#sidebarContainer{
+  width: 270px;
+  height: 491px;
+  margin: 50px auto;
+
 }
-#logoImg{
-  margin-top: 15px;
-  padding: 0px 5px;
-  width: 150px;
+#sidebarTitleBox{
+  width: 81px;
+  height: 30px;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 90px;
 }
+#sidebarTitle a{
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 700;
+  color: #F56363;
+}
+#sidebarTitlePoint{
+  width: 8px;
+  height: 8px;
+  background-color: #FFE895;
+  border-radius: 50px;
+}
+#sidebarBox{
+  width: 270px;
+  height: 371px;
+}
+#sidebarUserInfo{
+  width: 270px;
+  height: 124px;
+  margin-bottom: 100px;
+}
+#userBox{
+  width: 270px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap : 20px;
+  margin-bottom: 38px;
+}
+#userImg{
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  background-color: #ccc;
+}
+#userId{
+  font-size: 20px;
+  font-weight: 700;
+  color: #222222;
+}
+#followingBox{
+ width: fit-content;
+ height: 16px;
+ display: flex;
+ gap: 20px;
+}
+#following{
+  display: flex;
+  gap: 5px;
+
+}
+.followTxt{
+  font-size: 16px;
+  line-height: 100%;
+  color: #9E9E9E;
+}
+.followCnt{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #222222;
+}
+#followBox{
+  display: flex;
+  gap: 5px;
+}
+#sidebarMenu{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  margin-bottom: 180px;
+}
+
 #sidebarUl{
   list-style-type: none;
 }
 #sidebarUl li{
-  padding: 20px 20px;
+  margin-bottom: 39px;
+  font-size: 22px;
+  line-height: 100%;
+  font-weight: 700;
+
+}
+#msgBox{
+  width: fit-content;
+  height: 25px;
+  display: flex;
+  gap: 10px;
+}
+#msgCnt{
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 50px;
+  color: #FFFFFF;
+  background-color: #F56363;
 }
 
+#sideBottom{
+  width: 270px;
+  height: 106px;
+}
+#sideBottom button{
+  width: 270px;
+  height: 58px;
+  border: none;
+  color: #FFFFFF;
+  line-height: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #F56363;
+  border-radius: 10px;
+  padding: 20px 10px;
+  margin-bottom: 30px;
+}
 
-
-
+#logOutBox a{
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 18px;
+  color: #9E9E9E;
+}

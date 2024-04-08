@@ -1,0 +1,286 @@
+#postsContainer {
+    margin-left: 470px;
+    width: 1300px;
+    height: 1925px;
+}
+
+#postsBox {
+    margin: 50px 50px;
+    width: 1200px;
+    height: 1925px;
+}
+#postsTitleBox{
+    height: 28px;
+    display: flex;
+    gap: 7px;
+    margin-bottom: 50px;
+}
+#postsTitle{
+     font-size: 28px;
+     font-weight: 700;
+     line-height: 100%;
+     color: #161616;
+}
+#postsPoint{
+    background-color: #F56363;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+}
+#postsList{
+    width: 1300px;
+    height: 1847px;
+}
+#postBox{
+    width: 1300px;
+    height: auto;
+    border: 1px solid #EDEDED;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    padding: 30px 30px;
+}
+.postUpdateBtn button{
+    width: fit-content;
+    height: auto;
+    border: 1px solid #EDEDED;
+    padding: 7px 10px;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+.postDeleteBtn button{
+    width: fit-content;
+    height: auto;
+    border: none;
+    padding: 7px 10px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+#postSmallBox{
+    width: 1240px;
+    height: auto;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+}
+#postTitleBox{
+    width: 1240px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#postUser{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#postUserImg{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #EDEDED;
+}
+#postUserId{
+    width: 103px;
+    height: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #222222;
+}
+#postDate{
+    font-size: 14px;
+    line-height: 15px;
+    color: #5F5F5F;
+    margin-right: 50px;
+}
+#postContentsBox{
+    width: 1240px;
+    height: auto;
+    padding: 20px 20px;
+}
+#postPhoto{
+    width: 458px;
+    height: 338px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+}
+#postContents{
+    width: fit-content;
+    height: auto;
+    font-size: 15px;
+    line-height: 160%;
+    color: #222222;
+}
+#postLikesCmtBox{
+   width: 1200px;
+   height: 24px;
+   padding: 20px 0px;
+   display: flex;
+   justify-content: space-between;
+}
+#postLikesCmtSmallBox{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#likesBox{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#heartImg{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/heart.png');
+
+}
+.likesTxt{
+    font-size: 13px;
+    line-height: 13px;
+    color: #5F5F5F;
+    font-weight: 700;
+}
+#cmtBox{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#cmtImg{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/message-circle.png');
+}
+#cmtAddBox{
+    width: fit-content;
+    height: auto;
+}
+#cmtAddTxt{
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+    color: #5F5F5F;
+    cursor: pointer;
+}
+#postBtnBox{
+    display: flex;
+    gap: 5px;
+}
+#commentBox{
+    width: 1240px;
+    height: auto;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+    background-color: #F7F7F7;
+    border-radius: 10px;
+}
+#commentTitle{
+    display: flex;
+    justify-content: space-between;
+}
+#commentSmallBox{
+    width: fit-content;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+#cmtUserBox{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 17px;
+}
+#cmtUserImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #5F5F5F;
+}
+#cmtUserId{
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #222222;
+}
+#cmtDate{
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    color: #5F5F5F;
+}
+#cmtBtnBox{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.cmtUpdateBtn button{
+    width: fit-content;
+    height: auto;
+    border: 1px solid #EDEDED;
+    padding: 7px 10px;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+.cmtDeleteBtn button{
+    width: fit-content;
+    height: auto;
+    border: 1px solid #EDEDED;
+    padding: 7px 10px;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+#commnetTxt{
+    font-size: 15px;
+    line-height: 15px;
+    color: #222222;
+}
+#commnetAddTxt{
+    font-size: 15px;
+    line-height: 15px;
+    color: #222222;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+::-webkit-input-placeholder { /* 웹킷 브라우저(크롬, 사파리 등)에서 작동 */
+    color: #9E9E9E;
+ }
+#commnetAddTxt input{
+    width: 1200px;
+    height: 60px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #222222;
+}
+#commnetAddTxt button{
+    border: none;
+    width: 60px;
+    height: 60px;
+    background-color: #F56363;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 10px 7px;
+}

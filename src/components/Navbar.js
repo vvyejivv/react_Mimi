@@ -8,27 +8,53 @@ function Navbar() {
 
     return <nav>
         <div id="sidebar">
-            <div>
-                <img id="logoImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"></img>
+            <div id="sidebarContainer">
+                <div id="sidebarTitleBox">
+                    <div id="sidebarTitle"><a href="http://localhost:3000/Posts">Mimi</a></div>
+                    <div id="sidebarTitlePoint"></div>
+                </div>
+                <div id="sidebarBox">
+                    <div id="sidebarUserInfo">
+                        <div id="userBox">
+                            <div id="userImg"></div>
+                            <div id="userId">{userId}</div>
+                        </div>
+                        <div id="followingBox">
+                            <div id="following">
+                                <div className="followTxt">팔로잉</div>
+                                <div className="followCnt">100</div>
+                            </div>
+                            <div id="followBox">
+                                <div className="followTxt">팔로워</div>
+                                <div className="followCnt">100</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sidebarMenu">
+                        <ul id="sidebarUl">
+                            <li><Link to="/Posts" style={{ textDecoration: 'none', color: "#161616" }}>홈</Link></li>
+                            <li><Link to="/userInfo" style={{ textDecoration: 'none', color: "#161616" }}>내 프로필</Link></li>
+                            <li><Link to="/profile" style={{ textDecoration: 'none', color: "#161616" }}>둘러보기</Link></li>
+                            <li>
+                                <div id="msgBox">
+                                    <Link to="/Msg" style={{ textDecoration: 'none', color: "#161616" }}>메시지</Link>
+                                    <div id="msgCnt">+</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="sideBottom">
+                        <button>글쓰기</button>
+                        <div id="logOutBox">
+                            {userId ? (<div><a href="#" onClick={async function logout() {
+                                await setUserId(sessionStorage.removeItem("userId"));
+                                window.location.href = "http://localhost:3000/";
+                            }}>
+                                로그아웃</a></div>) : (<div> <Link to="/login">로그인</Link></div>)}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <ul id="sidebarUl">
-                    <li><Link to="/">홈</Link></li>
-                    <li><Link to="/Posts">글목록</Link></li>
-                    {/* <li><Link to="/search">검색</Link></li>
-                    <li><Link to="/recommend">추천</Link></li>
-                <li><Link to="/chat">DM</Link></li> */}
-                    <li><Link to="/profile">프로필</Link></li>
-                </ul>
-            </div>
-            <div><Link to="/setting">설정</Link></div>
-            {userId ? (<div><a href="#" onClick={async function logout(){
-                        await setUserId(sessionStorage.removeItem("userId"));
-                        window.location.href = "http://localhost:3000/";
-                    }}>
-                        로그아웃</a></div>) : (<div> <Link to="/login">로그인</Link></div>)}
-            <div><Link to="/userJoin">회원가입</Link></div>
         </div>
     </nav>
 }

@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import UserJoin from './pages/UserJoin';
 import UserInfo from './pages/UserInfo';
 import Posts from './pages/Posts';
+import Msg from './pages/Msg';
 import Navbar from './components/Navbar';
 import { useState } from "react";
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
@@ -15,24 +16,25 @@ import 'bootstrap/dist/css/bootstrap.min.css' //다른곳에서도 bootstrap 문
 function App() {
   const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
   return (
-    <div>
+    <div style={{display : "flex", flexDirection : "column"}}>
       <Router>
-        {/* {userId ? ( */}
+        {userId ? ( 
           <>
-            {/* <Navbar /> */}
+             <Navbar /> 
             <Routes>
               <Route path="/profile" element={<Profile />} />
               <Route path="/setting" element={<Setting />} />
-              <Route path="/userJoin" element={<UserJoin />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/posts" element={<Posts />} />
+              {/* <Route path="/msg" element={<Msg />} /> */}
             </Routes>
           </>
-        {/* ) : ( */}
-          <Routes>
+         ) : ( 
+           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/userJoin" element={<UserJoin />} />
           </Routes>
-        {/* )} */}
+        )}
       </Router>
     </div>
   );
