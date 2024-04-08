@@ -1,0 +1,32 @@
+#profileContainer{
+    margin-left: 470px;
+    width: 1300px;
+    height: 1925px;
+}
+#profileBox{
+    margin: 50px 50px;
+    width: 1300px;
+    height: 1882px;
+}
+#profileUserBox{
+ width: 1300px;
+ height: 204px;   
+}
+#profileUserSmallBox{
+    width: 1300px;
+    height: 150px;
+}
+#profileUserInfoBox{
+    width: 743.5px;
+}
+#userInfoBox{
+    width: 382px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+#userImg{
+    width: 150px;
+    height: 150px;
+    background-color: #ccc;
+}

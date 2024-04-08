@@ -32,6 +32,25 @@ function UserJoin() {
     const fnUserJoin = () => {
         async function fetchUserJoin() {
             try {
+                if(userId == ""){
+                    alert("아이디를 입력해주세요.");
+                    return;
+                }else if(pwd == ""){
+                    alert("비밀번호를 입력해주세요.");
+                    return
+                }else if(userName == ""){
+                    alert("이름을 입력해주세요.");
+                    return
+                }else if(birth == ""){
+                    alert("생년월일을 입력해주세요.");
+                    return
+                }else if(phone == ""){
+                    alert("핸드폰 번호를 입력해주세요.");
+                    return
+                }else if(email == ""){
+                    alert("이메일을 입력해주세요.");
+                    return
+                }
                 let str = `userId=${userId}&pwd=${pwd}&name=${userName}&birth=${birth}&phone=${phone}&email=${email}`;
                 const response = await fetch(`http://localhost:4000/userJoin.dox?${str}`);
                 const jsonData = await response.json();

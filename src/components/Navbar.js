@@ -33,8 +33,8 @@ function Navbar() {
                     <div id="sidebarMenu">
                         <ul id="sidebarUl">
                             <li><Link to="/Posts" style={{ textDecoration: 'none', color: "#161616" }}>홈</Link></li>
-                            <li><Link to="/userInfo" style={{ textDecoration: 'none', color: "#161616" }}>내 프로필</Link></li>
-                            <li><Link to="/profile" style={{ textDecoration: 'none', color: "#161616" }}>둘러보기</Link></li>
+                            <li><Link to="/profile" style={{ textDecoration: 'none', color: "#161616" }}>내 프로필</Link></li>
+                            {/* <li><Link to="/userInfo" style={{ textDecoration: 'none', color: "#161616" }}>내 프로필</Link></li> */}
                             <li>
                                 <div id="msgBox">
                                     <Link to="/Msg" style={{ textDecoration: 'none', color: "#161616" }}>메시지</Link>

@@ -7,7 +7,6 @@ function Posts() {
     const [userName, setUserName] = useState("");
     const [userIntro, setUserIntro] = useState("");
     const [userPostCnt, setUserPostCnt] = useState("");
-    console.log(userId);
     useEffect(() => {
         async function fetchList() {
             try {
@@ -16,8 +15,6 @@ function Posts() {
                 setPostList(jsonData);
                 setUserIntro(jsonData[0].INTRO);
                 setUserPostCnt(jsonData[0].POSTCNT);
-
-
                 console.log(jsonData);
             } catch (error) {
                 console.error("!!error!!");

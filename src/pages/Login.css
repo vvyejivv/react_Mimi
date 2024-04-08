@@ -116,10 +116,12 @@
 }
 #idFind{
     color: #5F5F5F;
+    cursor: pointer;
 }
 #findLine{
     color: #EDEDED;
 }
 #pwdFind{
     color: #5F5F5F;
+    cursor: pointer;
 }

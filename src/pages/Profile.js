@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Menu from '../components/Menu';
 import { json } from "react-router-dom";
+// import './P.css';
 function Profile() {
     const userId = sessionStorage.getItem("userId");
     const [postList, setPostList] = useState([]);

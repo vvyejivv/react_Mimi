@@ -62,9 +62,13 @@ function Login() {
                             }} id="joinBtn">회원가입</button>
                         </div>
                         <div id="findBox">
-                            <div id="idFind">아이디 찾기</div>
+                            <div id="idFind" onClick={()=>{
+                                alert("준비중입니다!");
+                            }}>아이디 찾기</div>
                             <div id="findLine"> | </div>
-                            <div id="pwdFind">비밀번호 찾기</div>
+                            <div id="pwdFind" onClick={()=>{
+                                alert("준비중입니다!");
+                            }}>비밀번호 찾기</div>
                         </div>
                     </div >
 
