@@ -66,7 +66,6 @@
     width: 1240px;
     height: auto;
     padding: 20px 20px;
-    margin-bottom: 20px;
 }
 #postTitleBox{
     width: 1240px;
@@ -74,6 +73,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 
 }
 #postUser{
@@ -85,7 +85,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50px;
-    background-color: #EDEDED;
+    background-image: url('../img/profile2.png');
 }
 #postUserId{
     width: 103px;
@@ -100,6 +100,19 @@
     line-height: 15px;
     color: #5F5F5F;
     margin-right: 50px;
+}
+#postTitle{
+    width: 1240px;
+    width: auto;
+    padding-top: 10px;
+}
+#postTitleTxt{
+    width: fit-content;
+    height: auto;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 160%;
+    color: #222222;
 }
 #postContentsBox{
     width: 1240px;
@@ -209,7 +222,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color: #5F5F5F;
+    background-image: url('../img/profile32.png');
 }
 #cmtUserId{
     width: fit-content;

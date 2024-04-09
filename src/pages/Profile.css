@@ -1,32 +1,228 @@
-#profileContainer{
+#profileContainer {
     margin-left: 470px;
     width: 1300px;
-    height: 1925px;
+    height: auto;
 }
-#profileBox{
+
+#profileBox {
     margin: 50px 50px;
     width: 1300px;
-    height: 1882px;
+    height: auto;
 }
-#profileUserBox{
- width: 1300px;
- height: 204px;   
+
+#profileTitleBox {
+    width: 1300px;
+    height: 204px;
+    margin-bottom: 50px;
 }
-#profileUserSmallBox{
+
+#profileTitleSmallBox {
     width: 1300px;
     height: 150px;
 }
-#profileUserInfoBox{
+
+#leftTitleBox {
     width: 743.5px;
+    height: 150px;
+    margin-bottom: 30px;
 }
-#userInfoBox{
+
+#leftTitleSmallBox {
     width: 382px;
     height: 150px;
     display: flex;
     align-items: center;
 }
-#userImg{
+
+#profileUserImg {
     width: 150px;
     height: 150px;
-    background-color: #ccc;
+    background-image: url('../img/profile3.png');
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+#profileUserInfoBox {
+    width: 192px;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#profileUserNameBox {
+    width: fit-content;
+    height: auto
+}
+
+#profileNameTxt {
+    width: fit-content;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#profileIdTxt {
+    width: fit-content;
+    font-size: 15px;
+    line-height: 15px;
+    color: #9E9E9E;
+}
+
+#profileUpdateBtn button {
+    width: 92px;
+    padding: 10px 10px;
+    font-size: 14px;
+    color: #5F5F5F;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #EDEDED;
+}
+
+#profileUserIntroBox {
+    width: 1300px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#feedListBox {
+    width: 1300px;
+    height: 1628px;
+}
+
+#feedContainer {
+    width: 1300px;
+    height: auto;
+    display: flex;
+    gap: 20px;
+}
+
+#feedBox {
+    width: 640px;
+    height: auto;
+    border-radius: 30px;
+    padding: 30px 30px;
+    border: 1px solid #EDEDED;
+}
+#feedBox a{
+    text-decoration: none;
+}
+
+#feedSmallBox {
+    width: 580px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#feedUserInfo {
+    width: fit-content;
+    height: 100px;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#feedUserInfoBox {
+    width: fit-content;
+    height: 60px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#feedUserProfileImg {
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/profile2.png');
+}
+#feedUserId{
+    width: fit-content;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 600;
+    color: #222222;
+}
+#feedUserDate{
+    color: #5F5F5F;
+    font-size: 14px;
+    line-height: 15px;
+}
+#feedTitleBox{
+    padding: 10px 10px;
+}
+#feedTitleTxt{
+    width: fit-content;
+    height: auto;
+    font-size: 15px;
+    line-height: 160%;
+    color: #222222;
+    font-weight: 700;
+}
+#feedContentsImg{
+    width: 202.93px;
+    height: 120px;
+    margin-bottom: 10px;
+    padding: 20px 0px;
+}
+#feedContentsBox{
+    width: 580px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+#feedContentsTxt{
+    width: fit-content;
+    height: auto;
+    font-size: 15px;
+    line-height: 160%;
+    color: #222222;
+}
+#feedLikesCmtBox{
+    width: 500px;
+    padding: 5px 20px;
+}
+#feedLikesCmtSmallBox{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#feedHeartBox{
+    width: 38px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#feedHeart{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/heart.png');
+}
+#feedHeartTxt{
+    font-size: 13px;
+    line-height: 13px;
+    color: #5F5F5F;
+    font-weight: 600;
+}
+#feedCmtBox{
+    width: 38px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#feedCmt{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/message-circle.png');
+}
+#feedCmtTxt{
+    font-size: 13px;
+    line-height: 13px;
+    color: #5F5F5F;
+    font-weight: 600;
 }

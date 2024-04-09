@@ -7,6 +7,8 @@ import Profile from './pages/Profile';
 import UserJoin from './pages/UserJoin';
 import UserInfo from './pages/UserInfo';
 import Posts from './pages/Posts';
+import Posting from './pages/Posting';
+import PostDetailView from './pages/PostDetailView';
 import Msg from './pages/Msg';
 import Navbar from './components/Navbar';
 import { useState } from "react";
@@ -26,6 +28,8 @@ function App() {
               <Route path="/setting" element={<Setting />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/posts" element={<Posts />} />
+              <Route path="/posting" element={<Posting />} />
+              <Route path="/postDetailView/:postNo" element={<PostDetailView />} />
               {/* <Route path="/msg" element={<Msg />} /> */}
             </Routes>
           </>

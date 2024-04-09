@@ -1,0 +1,93 @@
+#postDetailContainer{
+    margin-left: 470px;
+    width: 1300px;
+    height: auto;
+}
+#postDetailBox{
+    margin: 50px 50px;
+    width: 1300px;
+    height: auto;
+}
+#postDetailSmallBox {
+    width: 1300px;
+    height: auto; 
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    padding: 30px 30px;
+}
+#detailBox{
+    width: 1240px;
+    height: auto;
+}
+#detailUserInfoBox{
+    width: 1240px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+}
+#detailUserBox{
+    width: 183px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#detailUserImg{
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/profile2.png');
+}
+#detailUserId{
+    width: fit-content;
+    height: auto;
+    color: #222222;
+    line-height: 15px;
+}
+
+#detailContentsBox{
+    width: 1240px;
+    height: auto;
+    padding: 20px 20px;
+}
+#detailLikesCmtContainer{
+    width: 1240px;
+    height: auto;
+    margin-bottom: 20px;
+}
+#detailLikesCmtBox{
+    width: 180px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#detailLikesBox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#detailLike{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/heart.png');
+}
+.detailLikeTxt{
+    font-size: 13px;
+    line-height: 13px;
+    color: #5F5F5F;
+    font-weight: 700;
+}
+#detailCmtBox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#detailCmt{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-image: url('../img/message-circle.png');
+}

@@ -1,0 +1,150 @@
+#postingContainer {
+    margin-left: 470px;
+    width: 1300px;
+    height: auto;
+}
+
+#postingBox {
+    margin: 50px 50px;
+    width: 1300px;
+    height: auto;
+}
+
+#beforeBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #F56363;
+    padding: 5px 10px;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
+#postingSmallBox {
+    width: 1300px;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    padding: 30px 30px;
+}
+
+#postingUserInfoBox {
+    width: 1240px;
+    height: 100px;
+    padding: 20px 20px;
+}
+
+#postingUser {
+    width: 183px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#postingUserImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+#postingUserId {
+    width: fit-content;
+    height: 15px;
+}
+
+#writeBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#postingTitleTxt {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#postingTitle {
+    font-size: 14px;
+    color: #222222;
+    border-radius: 3px;
+    width: 1200px;
+    height: 40px;
+    border: 1px solid #EDEDED;
+}
+
+#postingContentsTxt {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+#postingContents {
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #EDEDED;
+    font-size: 14px;
+    color: #222222;
+    width: 1240px;
+    height: 500px;
+    resize: none;
+}
+
+#writeImgBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#writeImgBoxTxt {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#writeImg {
+    padding: 10px;
+    width: 500px;
+    height: 40px;
+    font-size: 14px;
+    color: #222222;
+}
+
+#writeImgBox button{
+    padding: 7px 20px;
+    border-radius: 4px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+}
+
+#postingContents:focus {
+    border-color: #F56363;
+}
+#postingBtnBox{
+    width: 1240px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#postingBtnBox button{
+    padding: 7px 10px;
+    border-radius: 4px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+}
+#addBtn button{
+    border: none;
+    background-color: #F56363;
+    color: #FFFFFF;
+}

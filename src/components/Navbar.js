@@ -44,7 +44,9 @@ function Navbar() {
                         </ul>
                     </div>
                     <div id="sideBottom">
-                        <button>글쓰기</button>
+                        <button  onClick={() => {
+                            window.location.href = `http://localhost:3000/posting?userId=${userId}`;
+                        }}>글쓰기</button>
                         <div id="logOutBox">
                             {userId ? (<div><a href="#" onClick={async function logout() {
                                 await setUserId(sessionStorage.removeItem("userId"));

@@ -81,7 +81,7 @@ body{
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  background-color: #ccc;
+  background-image: url('./img/profile4.png');
 }
 #userId{
   font-size: 20px;
