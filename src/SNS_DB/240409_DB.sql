@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `chat` (
   PRIMARY KEY (`CHATNO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.chat:~0 rows (대략적) 내보내기
 
 -- 테이블 sns_kimyeji.user 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user` (
@@ -46,7 +46,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user:~3 rows (대략적) 내보내기
+INSERT INTO `user` (`USERID`, `PWD`, `NAME`, `BIRTH`, `PHONE`, `EMAIL`, `CDATE`, `GRADE`, `INTRO`) VALUES
+	('test', '1234', '왜안돼', '20240404', '01012345678', 'test@test.com', '2024-04-04 17:13:08', '1', '안녕하세요~'),
+	('test123', '1234', '이테스트', '20240403', '01098765432', 'test2@test.com', '2024-04-04 17:18:17', '1', '안녕하세요~'),
+	('yeji', '1234', '김예지', '19971025', '01040859199', 'kim_yeji97@naver.com', '2024-04-04 13:14:52', '1', '코딩을 배우고 있는 코린이 입니다 （*＾-＾*）');
 
 -- 테이블 sns_kimyeji.user_follow 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user_follow` (
@@ -55,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `user_follow` (
   PRIMARY KEY (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user_follow:~0 rows (대략적) 내보내기
 
 -- 테이블 sns_kimyeji.user_follower 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user_follower` (
@@ -64,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `user_follower` (
   PRIMARY KEY (`USERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user_follower:~0 rows (대략적) 내보내기
 
 -- 테이블 sns_kimyeji.user_post 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user_post` (
@@ -79,7 +83,15 @@ CREATE TABLE IF NOT EXISTS `user_post` (
   PRIMARY KEY (`POSTNO`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user_post:~5 rows (대략적) 내보내기
+INSERT INTO `user_post` (`POSTNO`, `USERID`, `TITLE`, `CONTENTS`, `LIKES`, `HIT`, `CDATE`, `UDATE`) VALUES
+	(1, 'yeji', '첫번째 게시물', '오늘은 목요일', 0, 0, '2024-04-04 15:10:41', NULL),
+	(2, 'yeji', '두 번째 게시물', '오늘은 금요일', 0, 0, '2024-04-05 10:18:35', NULL),
+	(3, 'yeji', '세 번째 게시물', '오늘은 햄버거데이', 0, 0, '2024-04-05 10:18:48', NULL),
+	(4, 'yeji', '4 번째 게시물', '주말은 언제와', 0, 0, '2024-04-05 12:03:41', NULL),
+	(5, 'yeji', 'test', '1111', 0, 0, '2024-04-09 12:51:52', NULL),
+	(6, 'test', '테스트', '테스트중입니다.', 0, 0, '2024-04-09 15:29:55', NULL),
+	(7, 'test', '왜 안 나와', 'ㅠㅠ', 0, 0, '2024-04-09 15:36:08', NULL);
 
 -- 테이블 sns_kimyeji.user_post_photo 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user_post_photo` (
@@ -93,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `user_post_photo` (
   PRIMARY KEY (`POSTFILENO`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user_post_photo:~0 rows (대략적) 내보내기
 
 -- 테이블 sns_kimyeji.user_profile_photo 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user_profile_photo` (
@@ -107,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `user_profile_photo` (
   PRIMARY KEY (`USERPROFILENO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 sns_kimyeji.user_profile_photo:~0 rows (대략적) 내보내기
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
