@@ -39,13 +39,28 @@
     height: 60px;
     background-image: url('../img/profile2.png');
 }
+#detailDate{
+    font-size: 14px;
+    line-height: 15px;
+    color: #5F5F5F;
+    text-align: center;
+}
 #detailUserId{
     width: fit-content;
     height: auto;
-    color: #222222;
+    font-size: 15px;
+    font-weight: 600;
     line-height: 15px;
 }
-
+#detailTitleBox{
+    width: fit-content;
+    height: auto;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 160%;
+    color: #222222;
+    padding-left: 10px;
+}
 #detailContentsBox{
     width: 1240px;
     height: auto;
@@ -55,6 +70,8 @@
     width: 1240px;
     height: auto;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 #detailLikesCmtBox{
     width: 180px;

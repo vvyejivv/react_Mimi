@@ -4,7 +4,8 @@ import { json } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import './Profile.css';
 function Profile() {
-    const userId = sessionStorage.getItem("userId");
+    const sessionId = sessionStorage.getItem("userId");
+    const {userId} = useParams();
     const [postList, setPostList] = useState([]);
     const [userName, setUserName] = useState("");
     const [userIntro, setUserIntro] = useState("");
@@ -39,7 +40,7 @@ function Profile() {
                                     <div id="profileNameTxt">{userName}</div>
                                     <div id="profileIdTxt"><span>@</span>{userId}</div>
                                 </div>
-                                {userId ? (
+                                {userId == sessionId  ? (
                                     <div id="profileUpdateBtn">
                                         <button onClick={() => {
                                             window.location.href = "http://localhost:3000/UserInfo";

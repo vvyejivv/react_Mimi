@@ -95,6 +95,10 @@
     line-height: 15px;
     color: #222222;
 }
+#postUserId a{
+    text-decoration: none;
+    color: #222222;
+}
 #postDate{
     font-size: 14px;
     line-height: 15px;

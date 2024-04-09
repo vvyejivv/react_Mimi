@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Setting from './pages/Setting';
 import Profile from './pages/Profile';
+import UserProfile from './pages/UserProfile';
 import UserJoin from './pages/UserJoin';
 import UserInfo from './pages/UserInfo';
 import Posts from './pages/Posts';
@@ -25,6 +26,7 @@ function App() {
              <Navbar /> 
             <Routes>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/userProfile/:userId" element={<UserProfile />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/posts" element={<Posts />} />

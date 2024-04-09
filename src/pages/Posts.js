@@ -33,7 +33,9 @@ function Posts() {
                             <div id="postTitleBox">
                                 <div id="postUser">
                                     <div id="postUserImg"></div>
-                                    <div id="postUserId">{item.USERID}</div>
+                                    <div id="postUserId"><a href="#" onClick={()=>{
+                                        window.location.href=`http://localhost:3000/userProfile/${item.USERID}`;
+                                    }}>{item.USERID}</a></div>
                                 </div>
                                 <div id="postDate">{item.CDATE}</div>
                             </div>

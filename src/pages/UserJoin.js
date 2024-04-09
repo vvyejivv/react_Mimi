@@ -13,6 +13,7 @@ function UserJoin() {
 
     const fnUserId = (e) => {
         setUserId(e.target.value);
+        
     }
     const fnUserPwd = (e) => {
         setPwd(e.target.value);
@@ -56,7 +57,7 @@ function UserJoin() {
                 const jsonData = await response.json();
                 if (jsonData.result == "success") {
                     alert(jsonData.msg);
-                    window.location.href = "http://localhost:3000/login";
+                    window.location.href = "http://localhost:3000/";
                 } else if (jsonData.result == "fail") {
                     alert("다시 시도 바랍니다.");
                     return;
