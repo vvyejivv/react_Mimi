@@ -115,8 +115,9 @@ app.get('/postList.dox', function (req, res) {
     CONCAT(H.FILEPATH,H.FILENAME) AS PATH
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
-    INNER JOIN USER U ON P.USERID = U.USERID 
-    WHERE P.USERID = ?`, [map.userId], function (error, results, fields) {
+    INNER JOIN USER U ON P.USERID = U.USERID
+    WHERE P.USERID = ?
+    ORDER BY P.CDATE DESC`, [map.userId], function (error, results, fields) {
         if (error) throw error;
         res.send(results);
     });
@@ -136,7 +137,7 @@ app.get('/postView.dox', function (req, res) {
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID
-	 `, [map.postNo], function (error, results, fields) {
+    WHERE P.POSTNO = ?`, [map.postNo], function (error, results, fields) {
         if (error) throw error;
         res.send(results);
     });
