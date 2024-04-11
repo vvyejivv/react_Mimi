@@ -126,7 +126,11 @@
 #postPhoto{
     width: 458px;
     height: 338px;
-    background-color: #ccc;
+    margin-bottom: 10px;
+}
+#postPhoto img{
+    width: 458px;
+    height: 338px;
     margin-bottom: 10px;
 }
 #postContents{

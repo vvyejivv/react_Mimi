@@ -1,10 +1,33 @@
 #userInfoContainer{
     margin-left: 470px;
     width: 1300px;
-    height: 1925px;
+    height: 850px;
 }
 #userInfoBox{
     margin: 50px 50px;
     width: 1300px;
-    height: 1882px;
+    height: auto;
+}
+#userInfo_title{
+    font-size: 16px;
+    color: #222222;
+}
+#userInfoSmallBox{
+    width: 1300px;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    padding: 30px 30px;
+}
+.userInfo_flex{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+}
+#userInfo_pwdBox{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
 }

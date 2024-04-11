@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import './Posting.css';
 function Posting() {
     const userId = sessionStorage.getItem("userId");
-    const [selectedFile, setSelectedFile] = useState(null);
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
     const [post, setPost] = useState([]);

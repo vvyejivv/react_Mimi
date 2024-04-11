@@ -108,6 +108,9 @@ function PostDetailView() {
                         </div>
                         <div id="detailTitleBox">{postList.TITLE}</div>
                         <div id="detailContentsBox">
+                            {postList.PATH && postList.PATH !== "null" && (
+                                <div id="postPhoto"><img src={`http://localhost:4000/${postList.PATH}`} alt="post image" /></div>
+                            )}
                             <div>{postList.CONTENTS}</div>
                         </div>
                         <div id="detailLikesCmtContainer">

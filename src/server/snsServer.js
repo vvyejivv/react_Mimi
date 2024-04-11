@@ -4,8 +4,6 @@ const mysql = require('mysql');
 const path = require('path'); //파일 연결
 const session = require('express-session'); //세션
 const app = express();
-
-
 app.use(cors());
 app.use(session({
     secret: 'test',
@@ -13,7 +11,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
-app.use(express.static(path.join(__dirname, 'img'))); 
+app.use(express.static(path.join(__dirname, 'img')));
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 //ejs(jsp같은 파일) 설정
 app.set('view engine', 'ejs'); //디폴트로 ejs파일 잡아둠
@@ -41,18 +41,18 @@ connection.connect(function (err) {
 const multer = require('multer'); // npm install multer
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-      cb(null, 'img/'); // 파일이 저장될 경로 설정
-  },
-  filename: (req, file, cb) => {
-      cb(null, file.originalname); // 파일 이름 설정
-  }
+    destination: (req, file, cb) => {
+        cb(null, './img/'); // 파일이 저장될 경로 설정
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname); // 파일 이름 설정
+    }
 });
 const upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('file'), (req, res) => {
-  console.log('파일', req.file);
-  res.send({result : "success"});
+    console.log('파일', req.file);
+    res.send({ result: "success" });
 });
 
 
@@ -112,7 +112,7 @@ app.get('/postListAll.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
+    H.FILENAME   AS PATH,
     C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
 	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
     COUNT(C.COMMENTNO) AS COMMENTCNT
@@ -161,7 +161,7 @@ app.get('/postView.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
+    H.FILENAME AS PATH,
     C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
 	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
 	COUNT(C.COMMENTNO) AS COMMENTCNT
@@ -178,14 +178,30 @@ app.get('/postView.dox', function (req, res) {
 
 
 //insert  - 사용자 게시글 작성(dox)
-app.get('/posting.dox', function (req, res) {
-    var map = req.query; //파라미터 값
-
+app.post('/posting.dox', function (req, res) {
+    var map = req.body; //파라미터 값
+    console.log("test ->> ", map);
     // MySQL 쿼리 실행
     connection.query(`INSERT INTO USER_POST VALUES(NULL,?,?,?,0,0,NOW(),NULL)`, [map.userId, map.title, map.contents], function (error, results, fields) {
         if (error) {
             res.send({ result: "fail" });
         } else {
+            // _IMAGE 4. 게시글 작성 성공 시 pk값 반환
+            const POSTNO = results.insertId; // 새로 생성된 게시글의 번호 가져오기
+
+            // _IMAGE 5. 게시글 작성 후 이미지 파일 정보 삽입
+            const filePaths = req.body.files; // 이미지 파일 경로들
+            console.log("POSTNO ==> ", POSTNO);
+
+            // _IMAGE 6. db 구조에 맞게 수정 
+            for(let i=0; i<filePaths.length; i++){
+                const fileName = filePaths[i].fileName; // 파일명
+                const fileOrgName = filePaths[i].fileOrgName; // 원본 파일명
+                connection.query("INSERT INTO USER_POST_PHOTO (POSTNO, FILEPATH, FILENAME, FILEORGNAME) VALUES (?, ?, ?, ?)", [POSTNO, "/img/", fileName, fileOrgName], (error, results, fields) => {
+                if (error) throw error;
+                console.log("이미지 파일이 성공적으로 삽입되었습니다.");
+                });
+            }
             res.send({ result: "success", msg: "작성되었습니다." });
         }
     });

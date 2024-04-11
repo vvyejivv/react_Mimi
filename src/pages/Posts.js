@@ -76,21 +76,21 @@ function Posts() {
         }
         fetchCommentSave();
     }
-    const fnCommentDelete = (postNo,userId,commentNo) => {
+    const fnCommentDelete = (postNo, userId, commentNo) => {
         async function fetchCommentDelete() {
             try {
                 if (window.confirm("댓글을 정말 삭제하시겠습니까?")) {
 
-                const response = await fetch(`http://localhost:4000/commentDelete.dox?userId=${userId}&postNo=${postNo}&commentNo=${commentNo}`);
-                const jsonData = await response.json();
-                if (jsonData.result == "success") {
-                    alert(jsonData.msg);
-                    window.location.href = `http://localhost:3000/Posts`;
-                } else {
-                    alert("댓글 삭제 실패했습니다. 다시 시도하세요.");
-                    return;
+                    const response = await fetch(`http://localhost:4000/commentDelete.dox?userId=${userId}&postNo=${postNo}&commentNo=${commentNo}`);
+                    const jsonData = await response.json();
+                    if (jsonData.result == "success") {
+                        alert(jsonData.msg);
+                        window.location.href = `http://localhost:3000/Posts`;
+                    } else {
+                        alert("댓글 삭제 실패했습니다. 다시 시도하세요.");
+                        return;
+                    }
                 }
-            }
 
             } catch (error) {
                 console.error("에러!");
@@ -124,7 +124,9 @@ function Posts() {
                             </div>
                             <div id="postContentsBox">
                                 <div id="postContents">
-                                    {item.PATH == "null" || item.PATH == "" ? <div id="postPhoto"><img src=""></img></div> : ""}
+                                    {item.PATH && item.PATH !== "null" && (
+                                        <div id="postPhoto"><img src={`http://localhost:4000/${item.PATH}`} alt="post image" /></div>
+                                    )}
                                     {item.CONTENTS}
                                 </div>
                             </div>
@@ -168,7 +170,7 @@ function Posts() {
                                                 {userId == item.USERID ? (
                                                     <div id="cmtBtnBox">
                                                         <div className="cmtUpdateBtn"><button>수정</button></div>
-                                                        <div className="cmtDeleteBtn"><button onClick={()=>fnCommentDelete(item.POSTNO,userId,item.COMMENTNO)}>삭제</button></div>
+                                                        <div className="cmtDeleteBtn"><button onClick={() => fnCommentDelete(item.POSTNO, userId, item.COMMENTNO)}>삭제</button></div>
                                                     </div>
                                                 ) : ""}
                                             </div>
