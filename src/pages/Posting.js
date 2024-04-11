@@ -13,6 +13,7 @@ function Posting() {
     const fnContents = (e) => {
         setContents(e.target.value);
     }
+
     const fnAdd = () => {
         async function fetchPosting() {
             try {
@@ -24,6 +25,25 @@ function Posting() {
                     alert("내용을 입력하세요.");
                     return;
                 }
+                const imgformData = new FormData();
+                // imgformData.append('file', selectedFile, fileName);
+                try {
+                    const response = await fetch('http://localhost:4000/upload', {
+                        method: 'POST',
+                        body: imgformData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('이미지 업로드에 실패했습니다.');
+                    }
+
+                    const responseData = await response.json();
+                    alert(responseData.result); // 업로드 결과 출력
+                } catch (error) {
+                    console.error('이미지 업로드 오류:', error.message);
+                    // 오류 처리
+                }
+
                 const response = await fetch(`http://localhost:4000/posting.dox?userId=${userId}&title=${title}&contents=${contents}`);
                 const jsonData = await response.json();
                 if (jsonData.result == "success") {
@@ -43,7 +63,7 @@ function Posting() {
 
     return <div id="postingContainer">
         <div id="postingBox">
-            <div id="beforeBtn" onClick={()=>{
+            <div id="beforeBtn" onClick={() => {
                 window.history.back();
             }}>←</div>
             <div id="postingSmallBox">
@@ -55,7 +75,7 @@ function Posting() {
                     </div>
                     <div id="writeImgBox">
                         <div id="writeImgBoxTxt">사진</div>
-                        <input type="file" id="writeImg"></input>
+                        <input type="file" id="writeImg" ></input>
                     </div>
                     <div id="postingContentsBox">
                         <div id="postingContentsTxt">내용</div>
@@ -64,8 +84,8 @@ function Posting() {
                 </div>
                 <div id="postingBtnBox">
                     <div id="addBtn"><button onClick={fnAdd}>작성</button></div>
-                    <div><button onClick={()=>{
-                        window.location.href="http://localhost:3000/Posts";
+                    <div><button onClick={() => {
+                        window.location.href = "http://localhost:3000/Posts";
                     }}>취소</button></div>
                 </div>
             </div>
