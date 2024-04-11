@@ -13,7 +13,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
-
+app.use(express.static(path.join(__dirname, 'img'))); 
 
 //ejs(jsp같은 파일) 설정
 app.set('view engine', 'ejs'); //디폴트로 ejs파일 잡아둠
@@ -36,6 +36,24 @@ connection.connect(function (err) {
     console.log('Connected to MySQL database as id ' + connection.threadId + ' db연결 성공!');
 });
 
+
+//이미지 연결
+const multer = require('multer'); // npm install multer
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'img/'); // 파일이 저장될 경로 설정
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.originalname); // 파일 이름 설정
+  }
+});
+const upload = multer({ storage: storage });
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  console.log('파일', req.file);
+  res.send({result : "success"});
+});
 
 
 //select  - 로그인(dox)
@@ -94,10 +112,15 @@ app.get('/postListAll.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH
+    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
+    C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
+	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
+    COUNT(C.COMMENTNO) AS COMMENTCNT
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID 
+    LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
+    GROUP BY P.POSTNO
     ORDER BY P.CDATE DESC`, function (error, results, fields) {
         if (error) throw error;
         res.send(results);
@@ -112,11 +135,16 @@ app.get('/postList.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH
+    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
+        C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
+	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
+	    COUNT(C.COMMENTNO) AS COMMENTCNT
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID
+    LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
     WHERE P.USERID = ?
+    GROUP BY P.POSTNO
     ORDER BY P.CDATE DESC`, [map.userId], function (error, results, fields) {
         if (error) throw error;
         res.send(results);
@@ -133,10 +161,14 @@ app.get('/postView.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH
+    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
+    C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
+	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
+	COUNT(C.COMMENTNO) AS COMMENTCNT
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID
+    LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
     WHERE P.POSTNO = ?`, [map.postNo], function (error, results, fields) {
         if (error) throw error;
         res.send(results);
@@ -157,6 +189,62 @@ app.get('/posting.dox', function (req, res) {
             res.send({ result: "success", msg: "작성되었습니다." });
         }
     });
+});
+
+//update - 게시글 수정(dox)
+app.get('/postingUpdate.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    console.log("수정 내용 -> ", map);
+    // MySQL 쿼리 실행
+    connection.query(`UPDATE USER_POST SET TITLE = ?, CONTENTS = ?, CDATE = NOW()  WHERE USERID = ? AND POSTNO = ?`, [map.title, map.contents, map.userId, map.postNo], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            res.send({ result: "success", msg: "수정되었습니다." });
+        }
+    });
+});
+
+//delete - 게시글 삭제(dox)
+app.get('/postingDelete.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`DELETE FROM USER_POST WHERE USERID = ? AND POSTNO = ?`, [map.userId, map.postNo], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            res.send({ result: "success", msg: "삭제되었습니다." });
+        }
+    });
+
+});
+
+//insert  - 사용자 댓글 작성(dox)
+app.get('/commentAdd.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    console.log(map);
+    // MySQL 쿼리 실행
+    connection.query(`INSERT INTO USER_POST_COMMENT VALUES(NULL,?,?,?,NOW())`, [map.postNo, map.comment, map.userId], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            res.send({ result: "success", msg: "작성되었습니다." });
+        }
+    });
+});
+
+//delete - 사용자 댓글 삭제(dox)
+app.get('/commentDelete.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`DELETE FROM USER_POST_COMMENT WHERE USERID = ? AND POSTNO = ? AND COMMENTNO =?`, [map.userId, map.postNo, map.commentNo], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            res.send({ result: "success", msg: "삭제되었습니다." });
+        }
+    });
+
 });
 
 //select - 사용자 정보(dox)
@@ -189,21 +277,49 @@ app.get('/userInfoUpdate.dox', function (req, res) {
 });
 
 
-
-
-//delete - 게시판 내용 삭제(dox)
-app.get('/boardDelete.dox', function (req, res) {
-    var boardNo = req.query.boardNo; //파라미터 값
+//select - 팔로우 정보(dox)
+app.get('/selectFollow.dox', function (req, res) {
+    var map = req.query; //파라미터 값
     // MySQL 쿼리 실행
-    connection.query(`DELETE FROM TBL_BOARD WHERE BOARDNO = ?`, [boardNo], function (error, results, fields) {
+    connection.query(`SELECT * FROM USER_FOLLOW WHERE USERID = ? AND SESSIONID = ?`, [map.userId, map.sessionId], function (error, results, fields) {
         if (error) {
             res.send({ result: "fail" });
         } else {
-            res.send({ result: "success" });
+            console.log(results);
+            res.send({ result: "success", follow: results });
+        }
+
+    });
+});
+
+//insert  - 팔로우 추가(dox)
+app.get('/following.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`INSERT INTO USER_FOLLOW VALUES(?,?)`, [map.sessionId, map.userId], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail", msg: "이미 팔로잉 되어있습니다." });
+        } else {
+            res.send({ result: "success", msg: "추가되었습니다." });
+        }
+    });
+});
+
+//delete - 팔로우 삭제(dox)
+app.get('/followDelete.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`DELETE FROM USER_FOLLOW WHERE USERID = ? AND  SESSIONID = ?`, [map.userId, map.sessionId], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            res.send({ result: "success", msg: "취소 되었습니다." });
         }
     });
 
 });
+
+
 
 
 
