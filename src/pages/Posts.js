@@ -21,10 +21,10 @@ function Posts() {
         }
         fetchList();
     }, []);
-   const fnDelete = (postNo) => {
+    const fnDelete = (postNo) => {
         async function fetchPostDelete() {
             try {
-                if(window.confirm("정말 삭제하시겠습니까?")){
+                if (window.confirm("정말 삭제하시겠습니까?")) {
                     const response = await fetch(`http://localhost:4000/postingDelete.dox?userId=${userId}&postNo=${postNo}`);
                     const jsonData = await response.json();
                     console.log(jsonData.result);
@@ -76,6 +76,29 @@ function Posts() {
         }
         fetchCommentSave();
     }
+    const fnCommentDelete = (postNo,userId,commentNo) => {
+        async function fetchCommentDelete() {
+            try {
+                if (window.confirm("댓글을 정말 삭제하시겠습니까?")) {
+
+                const response = await fetch(`http://localhost:4000/commentDelete.dox?userId=${userId}&postNo=${postNo}&commentNo=${commentNo}`);
+                const jsonData = await response.json();
+                if (jsonData.result == "success") {
+                    alert(jsonData.msg);
+                    window.location.href = `http://localhost:3000/Posts`;
+                } else {
+                    alert("댓글 삭제 실패했습니다. 다시 시도하세요.");
+                    return;
+                }
+            }
+
+            } catch (error) {
+                console.error("에러!");
+            }
+        }
+        fetchCommentDelete();
+    }
+
     return <div id="postsContainer">
         <div id="postsBox">
             <div id="postsTitleBox">
@@ -113,15 +136,15 @@ function Posts() {
                                     </div>
                                     <div id="cmtBox">
                                         <div id="cmtImg"></div>
-                                        <div className="likesTxt">0</div>
+                                        <div className="likesTxt">{item.COMMENTCNT}</div>
                                     </div>
                                     <div id="cmtAddBox">
                                         <div id="cmtAddTxt" onClick={() => toggleComment(item.POSTNO)}>댓글달기</div>
                                     </div>
                                 </div>
                                 {userId == item.USERID ? (<div id="postBtnBox">
-                                    <div className="postUpdateBtn"><button onClick={()=> {
-                                         window.location.href=`http://localhost:3000/postingUpdate/${item.POSTNO}`
+                                    <div className="postUpdateBtn"><button onClick={() => {
+                                        window.location.href = `http://localhost:3000/postingUpdate/${item.POSTNO}`
                                     }}>수정</button></div>
                                     <div className="postDeleteBtn"><button onClick={() => fnDelete(item.POSTNO)}> 삭제</button></div>
                                 </div>) : ""}
@@ -132,22 +155,26 @@ function Posts() {
                         {showComment[item.POSTNO] && (
                             <div>
                                 <div id="commentContainer">
-                                    <div id="commentBox">
-                                        <div id="commentTitle">
-                                            <div id="commentSmallBox">
-                                                <div id="cmtUserBox">
-                                                    <div id="cmtUserImg"></div>
-                                                    <div id="cmtUserId">{item.USERID}</div>
-                                                    <div id="cmtDate">{item.CDATE}</div>
+                                    {item.COMMENTNO && (
+                                        <div id="commentBox">
+                                            <div id="commentTitle">
+                                                <div id="commentSmallBox">
+                                                    <div id="cmtUserBox">
+                                                        <div id="cmtUserImg"></div>
+                                                        <div id="cmtUserId">{item.COMMENTID}</div>
+                                                        <div id="cmtDate">{item.COMMENTDATE}</div>
+                                                    </div>
                                                 </div>
+                                                {userId == item.USERID ? (
+                                                    <div id="cmtBtnBox">
+                                                        <div className="cmtUpdateBtn"><button>수정</button></div>
+                                                        <div className="cmtDeleteBtn"><button onClick={()=>fnCommentDelete(item.POSTNO,userId,item.COMMENTNO)}>삭제</button></div>
+                                                    </div>
+                                                ) : ""}
                                             </div>
-                                            {userId == item.USERID ? (<div id="cmtBtnBox">
-                                                <div className="cmtUpdateBtn"><button>수정</button></div>
-                                                <div className="cmtDeleteBtn"><button>삭제</button></div>
-                                            </div>) : ""}
+                                            <div id="commnetTxt">{item.COMMENT}</div>
                                         </div>
-                                        <div id="commnetTxt"> 댓글테스트 </div>
-                                    </div>
+                                    )}
                                 </div>
                                 <div id="commentContainer">
                                     <div id="commentBox">

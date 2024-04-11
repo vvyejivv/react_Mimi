@@ -53,7 +53,6 @@ function Profile() {
             </div>
             <div id="feedListBox">
                 <div id="feedContainer" className="row">
-                    {/* 사진 있을때 */}
                     {postList.map(item => (
                         <div id="feedBox" className="col-md-2" key={item.POSTNO}>
                             <a href="#" onClick={()=>{
