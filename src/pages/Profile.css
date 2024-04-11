@@ -47,7 +47,7 @@
     height: 61px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 #profileUserNameBox {
@@ -66,6 +66,19 @@
     font-size: 15px;
     line-height: 15px;
     color: #9E9E9E;
+}
+
+#followBtn button{
+    width: 65px;
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    color: #FFFFFF;
+    background-color: #F56363;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 #profileUpdateBtn button {

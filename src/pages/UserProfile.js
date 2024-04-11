@@ -10,6 +10,7 @@ function Profile() {
     const [userName, setUserName] = useState("");
     const [userIntro, setUserIntro] = useState("");
     const [userPostCnt, setUserPostCnt] = useState("");
+    const [userFollow, setUserFollow] = useState("");
     console.log(userId);
     useEffect(() => {
         async function fetchList() {
@@ -20,14 +21,61 @@ function Profile() {
                 setUserIntro(jsonData[0].INTRO);
                 setUserPostCnt(jsonData[0].POSTCNT);
                 setUserName(jsonData[0].NAME);
-                console.log(jsonData);
             } catch (error) {
                 console.error("!!error!!");
             }
         }
         fetchList();
+    }, [userId]);
+    useEffect(() => {
+        async function fetchSelectFollow() {
+            try {
+                const response = await fetch(`http://localhost:4000/selectFollow.dox?userId=${userId}&sessionId=${sessionId}`);
+                const jsonData = await response.json();
+                setUserFollow(jsonData.follow);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchSelectFollow();
     }, []);
+    const fnFollow = () =>{
+        async function fetchfollowing() {
+            try {
+                const response = await fetch(`http://localhost:4000/following.dox?userId=${userId}&sessionId=${sessionId}`);
+                const jsonData = await response.json();
+                if (jsonData.result == "success") {
+                    alert(jsonData.msg);
+                    window.location.href = `http://localhost:3000/userProfile/${userId}`;
+                } else {
+                    alert("이미 추가되어있습니다.");
+                    return;
+                }
 
+            } catch (error) {
+                console.error("에러!");
+            }
+        }
+        fetchfollowing();
+    }
+
+    const fnUnFollow = ()=>{
+        async function fetchUnfollow() {
+            try {
+                if(window.confirm("정말 팔로우 취소하시겠습니까?")){
+                    const response = await fetch(`http://localhost:4000/followDelete.dox?userId=${userId}&sessionId=${sessionId}`);
+                    const jsonData = await response.json();
+                    if (jsonData.result == "success") {
+                        alert(jsonData.msg);
+                        window.location.href = `http://localhost:3000/userProfile/${userId}`;
+                    } 
+                }
+            } catch (error) {
+                console.error("에러!");
+            }
+        }
+        fetchUnfollow();
+    }
     return <div id="profileContainer">
         <div id="profileBox">
             <div id="profileTitleBox">
@@ -40,6 +88,7 @@ function Profile() {
                                     <div id="profileNameTxt">{userName}</div>
                                     <div id="profileIdTxt"><span>@</span>{userId}</div>
                                 </div>
+                                {userFollow != "" ? <div id="followBtn"><button onClick={fnUnFollow}>팔로우 취소</button></div> : <div id="followBtn"><button onClick={fnFollow}>팔로우</button></div>}
                                 {userId == sessionId  ? (
                                     <div id="profileUpdateBtn">
                                         <button onClick={() => {

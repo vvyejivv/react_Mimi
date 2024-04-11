@@ -1,0 +1,156 @@
+#msgContainer{
+    margin-left: 470px;
+    width: 1300px;
+    height: 850px;
+}
+#messageBox{
+    margin: 50px 50px;
+    width: 1300px;
+    height: auto;
+}
+#messageContainer{
+    display: flex;
+    gap: 10px;
+}
+#messageSideBox{
+    width: 400px;
+    height: 800px;
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    padding: 30px 30px;
+}
+#messageMainBox{
+    width: 840px;
+    height: 800px;
+    border-radius: 15px;
+    border: 1px solid #EDEDED;
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+#msgIdBox{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#msgIdTxt{
+    font-size: 23px;
+    color: #222222;
+    font-weight: 700;
+}
+#msgTxtBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #EDEDED;
+}
+#msgTxtBox button{
+    width: 60px;
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    color: #FFFFFF;
+    background-color: #F56363;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+#msgTitleTxt{
+    font-size: 18px;
+    color: #222222;
+    font-weight: 600;
+}
+#chatContainer{
+    width: 360px;
+}
+#chatBox{
+    display: flex;
+    margin-bottom: 5px;
+}
+#chatRoom{
+    width: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #EDEDED;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+#chatUser{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#chatUserImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#chatUserName{
+    font-size: 15px;
+    color: #222222;
+    font-weight: 500;
+}
+#chatContents{
+    width: fit-content;
+    font-size: 14px;
+    color: #222222;
+}
+.chat-container{
+    display: flex;
+    flex-direction: column;
+}
+#chatSender{
+    background-color: #fff9a3; /* 발신인 말풍선 배경색 */
+    color: #000; /* 발신인 말풍선 텍스트 색상 */
+    border-radius: 10px; /* 발신인 말풍선 가장자리 둥글기 */
+    padding: 10px; /* 발신인 말풍선 내부 여백 */
+    margin-bottom: 5px; /* 발신인 말풍선과 수신인 말풍선 사이의 간격 */
+    align-self: flex-start; /* 발신인 말풍선을 왼쪽에 정렬 */
+    max-width: 70%; /* 말풍선 최대 너비 */
+}
+#chatRecipient{
+    text-align: right;
+    background-color: #C2E0FC; /* 수신인 말풍선 배경색 */
+    color: #000; /* 수신인 말풍선 텍스트 색상 */
+    border-radius: 10px; /* 수신인 말풍선 가장자리 둥글기 */
+    padding: 10px; /* 수신인 말풍선 내부 여백 */
+    margin-bottom: 5px; /* 발신인 말풍선과 수신인 말풍선 사이의 간격 */
+    align-self: flex-end; /* 수신인 말풍선을 오른쪽에 정렬 */
+    max-width: 70%; /* 말풍선 최대 너비 */
+}
+#chatingBox{
+    position: absolute; /* 상대적 위치 설정 */
+    bottom: 0; /* 하단으로 이동 */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#chatingBox input{
+    width: 710px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 20px 25px;
+    border: 1px solid #EDEDED;
+    color: #222222;
+    margin-bottom: 10px;
+}
+
+#chatingBox button{
+    width: 60px;
+    height: 40px;
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    color: #FFFFFF;
+    background-color: #F56363;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}

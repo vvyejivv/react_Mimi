@@ -9,6 +9,7 @@ import UserJoin from './pages/UserJoin';
 import UserInfo from './pages/UserInfo';
 import Posts from './pages/Posts';
 import Posting from './pages/Posting';
+import PostingUpdate from './pages/PostingUpdate';
 import PostDetailView from './pages/PostDetailView';
 import Msg from './pages/Msg';
 import Navbar from './components/Navbar';
@@ -31,8 +32,9 @@ function App() {
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/posts" element={<Posts />} />
               <Route path="/posting" element={<Posting />} />
+              <Route path="/postingUpdate/:postNo" element={<PostingUpdate />} />
               <Route path="/postDetailView/:postNo" element={<PostDetailView />} />
-              {/* <Route path="/msg" element={<Msg />} /> */}
+              <Route path="/msg" element={<Msg />} />
             </Routes>
           </>
          ) : ( 
