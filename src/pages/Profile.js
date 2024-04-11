@@ -19,6 +19,7 @@ function Profile() {
                 setUserIntro(jsonData[0].INTRO);
                 setUserPostCnt(jsonData[0].POSTCNT);
                 setUserName(jsonData[0].NAME);
+                console.log(jsonData);
             } catch (error) {
                 console.error("!!error!!");
             }
@@ -83,7 +84,7 @@ function Profile() {
                                             </div>
                                             <div id="feedCmtBox">
                                                 <div id="feedCmt"></div>
-                                                <div id="feedCmtTxt">0</div>
+                                                <div id="feedCmtTxt">{item.COMMENTCNT}</div>
                                             </div>
                                         </div>
                                     </div>
