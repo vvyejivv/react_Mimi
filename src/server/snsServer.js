@@ -104,6 +104,8 @@ app.get('/idCheck.dox', function (req, res) {
     });
 });
 
+
+
 //select - 전체 글 불러오기(dox)
 app.get('/postListAll.dox', function (req, res) {
     var map = req.query; //파라미터 값
@@ -115,11 +117,13 @@ app.get('/postListAll.dox', function (req, res) {
     H.FILENAME   AS PATH,
     C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
 	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
-    COUNT(C.COMMENTNO) AS COMMENTCNT
+    COUNT(C.COMMENTNO) AS COMMENTCNT,
+    I.FILENAME AS USERPATH
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID 
     LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
+    LEFT JOIN user_profile_photo I ON U.USERID = I.USERID
     GROUP BY P.POSTNO
     ORDER BY P.CDATE DESC`, function (error, results, fields) {
         if (error) throw error;
@@ -135,14 +139,16 @@ app.get('/postList.dox', function (req, res) {
     connection.query(`SELECT P.POSTNO AS POSTNO, U.USERID, U.NAME, INTRO, TITLE, CONTENTS, LIKES, HIT, 
     (SELECT COUNT(POSTNO) FROM USER_POST) AS POSTCNT, 
     DATE_FORMAT(P.CDATE, '%Y/%m/%d %p %h:%i') AS CDATE,
-    CONCAT(H.FILEPATH,H.FILENAME) AS PATH,
-        C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
+    H.FILENAME AS PATH,
+    C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
 	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
-	    COUNT(C.COMMENTNO) AS COMMENTCNT
+	COUNT(C.COMMENTNO) AS COMMENTCNT,
+	I.FILENAME AS USERPATH
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID
     LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
+    LEFT JOIN user_profile_photo I ON U.USERID = I.USERID
     WHERE P.USERID = ?
     GROUP BY P.POSTNO
     ORDER BY P.CDATE DESC`, [map.userId], function (error, results, fields) {
@@ -150,7 +156,6 @@ app.get('/postList.dox', function (req, res) {
         res.send(results);
     });
 });
-
 
 
 //select - 사용자 게시글 자세히(dox)
@@ -164,11 +169,13 @@ app.get('/postView.dox', function (req, res) {
     H.FILENAME AS PATH,
     C.COMMENTNO, C.USERID AS COMMENTID, C.COMMENT,
 	DATE_FORMAT(C.CDATE, '%Y/%m/%d %p %h:%i') AS COMMENTDATE,
-	COUNT(C.COMMENTNO) AS COMMENTCNT
+	COUNT(C.COMMENTNO) AS COMMENTCNT,
+	I.FILENAME AS USERPATH
     FROM USER_POST P 
     LEFT JOIN USER_POST_PHOTO H ON P.POSTNO = H.POSTNO 
     INNER JOIN USER U ON P.USERID = U.USERID
     LEFT JOIN USER_POST_COMMENT C ON P.POSTNO = C.POSTNO
+    LEFT JOIN user_profile_photo I ON U.USERID = I.USERID
     WHERE P.POSTNO = ?`, [map.postNo], function (error, results, fields) {
         if (error) throw error;
         res.send(results);
@@ -206,6 +213,53 @@ app.post('/posting.dox', function (req, res) {
         }
     });
 });
+
+//update - 사용자 정보 수정(dox)
+app.post('/userInfoUpdate.dox', function (req, res) {
+    var map = req.body; //파라미터 값
+    console.log("사용자정보 -> ", map);
+    // MySQL 쿼리 실행
+    connection.query(`UPDATE USER SET PWD = ?, NAME = ?, BIRTH = ?, PHONE = ?, EMAIL = ?, INTRO = ?  WHERE USERID = ?`, [map.pwd, map.name, map.birth, map.phone, map.email, map.intro, map.userId], function (error, results, fields) {
+        if (error) {
+            res.send({ result: "fail" });
+        } else {
+            const filePaths = req.body.files; // 이미지 파일 경로들
+            for(let i=0; i<filePaths.length; i++){
+                const fileName = filePaths[i].fileName; // 파일명
+                const fileOrgName = filePaths[i].fileOrgName; // 원본 파일명
+                connection.query("INSERT INTO USER_PROFILE_PHOTO (USERID, FILENAME, FILEORGNAME) VALUES (?, ?, ?)", [map.userId, fileName, fileOrgName], (error, results, fields) => {
+                if (error) throw error;
+                console.log("이미지 파일이 성공적으로 삽입되었습니다.");
+                });
+            }
+            res.send({ result: "success", msg: "수정되었습니다." });
+        }
+    });
+});
+
+
+//select - 사용자 사진 검색(dox)
+app.get('/profilePhoto.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`SELECT * FROM user_profile_photo WHERE USERID = ?`, [map.userId], function (error, results, fields) {
+        if (error) throw error;
+        res.send(results);
+    });
+});
+
+//select - 댓글 작성자 사진 검색(dox)
+app.get('/cmtImg.dox', function (req, res) {
+    var map = req.query; //파라미터 값
+    // MySQL 쿼리 실행
+    connection.query(`SELECT * , P.FILENAME AS CMTPATH
+    FROM user_post_comment C
+    LEFT JOIN user_profile_photo P ON C.USERID = P.USERID `, function (error, results, fields) {
+        if (error) throw error;
+        res.send(results);
+    });
+});
+
 
 //update - 게시글 수정(dox)
 app.get('/postingUpdate.dox', function (req, res) {
@@ -278,19 +332,6 @@ app.get('/userInfo.dox', function (req, res) {
 });
 
 
-//update - 사용자 정보 수정(dox)
-app.get('/userInfoUpdate.dox', function (req, res) {
-    var map = req.query; //파라미터 값
-    console.log("사용자정보 -> ", map);
-    // MySQL 쿼리 실행
-    connection.query(`UPDATE USER SET PWD = ?, NAME = ?, BIRTH = ?, PHONE = ?, EMAIL = ?, INTRO = ?  WHERE USERID = ?`, [map.pwd, map.name, map.birth, map.phone, map.email, map.intro, map.userId], function (error, results, fields) {
-        if (error) {
-            res.send({ result: "fail" });
-        } else {
-            res.send({ result: "success", msg: "수정되었습니다." });
-        }
-    });
-});
 
 
 //select - 팔로우 정보(dox)
