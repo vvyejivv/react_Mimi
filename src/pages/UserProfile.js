@@ -5,13 +5,26 @@ import { useParams } from "react-router-dom";
 import './Profile.css';
 function Profile() {
     const sessionId = sessionStorage.getItem("userId");
-    const {userId} = useParams();
+    const { userId } = useParams();
     const [postList, setPostList] = useState([]);
     const [userName, setUserName] = useState("");
     const [userIntro, setUserIntro] = useState("");
     const [userPostCnt, setUserPostCnt] = useState("");
     const [userFollow, setUserFollow] = useState("");
-    console.log(userId);
+    const [userInfo, setUserInfo] = useState(null);
+    useEffect(() => {
+        async function fetchList() {
+            try {
+                const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setUserInfo(jsonData[0]);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchList();
+    }, []);
     useEffect(() => {
         async function fetchList() {
             try {
@@ -39,7 +52,7 @@ function Profile() {
         }
         fetchSelectFollow();
     }, []);
-    const fnFollow = () =>{
+    const fnFollow = () => {
         async function fetchfollowing() {
             try {
                 const response = await fetch(`http://localhost:4000/following.dox?userId=${userId}&sessionId=${sessionId}`);
@@ -59,16 +72,16 @@ function Profile() {
         fetchfollowing();
     }
 
-    const fnUnFollow = ()=>{
+    const fnUnFollow = () => {
         async function fetchUnfollow() {
             try {
-                if(window.confirm("정말 팔로우 취소하시겠습니까?")){
+                if (window.confirm("정말 팔로우 취소하시겠습니까?")) {
                     const response = await fetch(`http://localhost:4000/followDelete.dox?userId=${userId}&sessionId=${sessionId}`);
                     const jsonData = await response.json();
                     if (jsonData.result == "success") {
                         alert(jsonData.msg);
                         window.location.href = `http://localhost:3000/userProfile/${userId}`;
-                    } 
+                    }
                 }
             } catch (error) {
                 console.error("에러!");
@@ -82,14 +95,18 @@ function Profile() {
                 <div id="profileTitleSmallBox">
                     <div id="leftTitleBox">
                         <div id="leftTitleSmallBox">
-                            <div id="profileUserImg"></div>
+                            {userInfo != null ? (
+                                <div id="userImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                            ) : (
+                                <div id="userInfoImg"></div>
+                            )}
                             <div id="profileUserInfoBox">
                                 <div id="profileUserNameBox">
                                     <div id="profileNameTxt">{userName}</div>
                                     <div id="profileIdTxt"><span>@</span>{userId}</div>
                                 </div>
                                 {userFollow != "" ? <div id="followBtn"><button onClick={fnUnFollow}>팔로우 취소</button></div> : <div id="followBtn"><button onClick={fnFollow}>팔로우</button></div>}
-                                {userId == sessionId  ? (
+                                {userId == sessionId ? (
                                     <div id="profileUpdateBtn">
                                         <button onClick={() => {
                                             window.location.href = "http://localhost:3000/UserInfo";
@@ -107,13 +124,17 @@ function Profile() {
                     {/* 사진 있을때 */}
                     {postList.map(item => (
                         <div id="feedBox" className="col-md-2" key={item.POSTNO}>
-                            <a href="#" onClick={()=>{
+                            <a href="#" onClick={() => {
                                 window.location.href = `http://localhost:3000/postDetailView/${item.POSTNO}`;
                             }}>
                                 <div id="feedSmallBox">
                                     <div id="feedUserInfo">
                                         <div id="feedUserInfoBox">
-                                            <div id="feedUserProfileImg"></div>
+                                            {item.USERPATH && item.USERPATH !== "null" ? (
+                                                <div id="userImg"><img src={`http://localhost:4000/${item.USERPATH}`} alt="post image" /></div>
+                                            ) : (
+                                                <div id="userInfoImg"></div>
+                                            )}
                                             <div id="feedUserId">{item.USERID}</div>
                                         </div>
                                         <div id="feedUserDate">{item.CDATE}</div>
@@ -135,7 +156,7 @@ function Profile() {
                                             </div>
                                             <div id="feedCmtBox">
                                                 <div id="feedCmt"></div>
-                                                <div id="feedCmtTxt">0</div>
+                                                <div id="feedCmtTxt">{item.COMMENTCNT}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -182,3 +182,22 @@ body{
   line-height: 18px;
   color: #9E9E9E;
 }
+
+
+#cmtUserImg{
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+#cmtUserImg img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+#cmtUserPhoto{
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-image: url('./img/profile32.png');
+}

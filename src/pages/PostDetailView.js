@@ -15,7 +15,7 @@ function PostDetailView() {
             try {
                 const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
                 const jsonData = await response.json();
-                console.log(jsonData);
+                console.log("사진 > ", jsonData);
                 setUserInfo(jsonData[0]);
             } catch (error) {
                 console.error("!!error!!");
@@ -29,7 +29,6 @@ function PostDetailView() {
                 const response = await fetch(`http://localhost:4000/postView.dox?postNo=${postNo}`);
                 const jsonData = await response.json();
                 setPostList(jsonData[0]);
-                console.log(jsonData);
             } catch (error) {
                 console.error("!!error!!");
             }
@@ -115,11 +114,11 @@ function PostDetailView() {
                     <div id="detailBox">
                         <div id="detailUserInfoBox">
                             <div id="detailUserBox">
-                            {userInfo != null ? (
-                                <div id="userImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
-                            ) : (
-                                <div id="userInfoImg"></div>
-                            )}
+                                {postList != null ? (
+                                    <div id="userImg"><img src={`http://localhost:4000/${postList.USERPATH}`} alt="post image" /></div>
+                                ) : (
+                                    <div id="userInfoImg"></div>
+                                )}
                                 <div id="detailUserId">{postList.USERID}</div>
                             </div>
                             <div id="detailDate">{postList.CDATE}</div>
@@ -183,7 +182,11 @@ function PostDetailView() {
                             <div id="commentBox">
                                 <div id="commentSmallBox">
                                     <div id="cmtUserBox">
-                                        <div id="cmtUserImg"></div>
+                                        {userInfo != null ? (
+                                            <div id="cmtUserImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                                        ) : (
+                                            <div id="cmtUserPhoto"></div>
+                                        )}
                                         <div id="cmtUserId">{userId}</div>
                                     </div>
                                 </div>

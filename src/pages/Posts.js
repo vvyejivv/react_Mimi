@@ -7,7 +7,20 @@ function Posts() {
     const [postList, setPostList] = useState([]);
     const [showComment, setShowComment] = useState(false);
     const [comment, setComment] = useState("");
-
+    const [userInfo, setUserInfo] = useState(null);
+    useEffect(() => {
+        async function fetchList() {
+            try {
+                const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setUserInfo(jsonData[0]);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchList();
+    }, []);
     useEffect(() => {
         async function fetchList() {
             try {
@@ -166,7 +179,7 @@ function Posts() {
                                             <div id="commentTitle">
                                                 <div id="commentSmallBox">
                                                     <div id="cmtUserBox">
-                                                        <div id="cmtUserImg"></div>
+                                                        <div id="cmtUserPhoto"></div>
                                                         <div id="cmtUserId">{item.COMMENTID}</div>
                                                         <div id="cmtDate">{item.COMMENTDATE}</div>
                                                     </div>
@@ -186,7 +199,11 @@ function Posts() {
                                     <div id="commentBox">
                                         <div id="commentSmallBox">
                                             <div id="cmtUserBox">
-                                                <div id="cmtUserImg"></div>
+                                                {userInfo != null ? (
+                                                    <div id="cmtUserImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                                                ) : (
+                                                    <div id="cmtUserPhoto"></div>
+                                                )}
                                                 <div id="cmtUserId">{userId}</div>
                                             </div>
                                         </div>
