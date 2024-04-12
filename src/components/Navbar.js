@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom" //a태그 대신에 깜빡이지 않게 해주는 라우터안의 기능
 
 //Nav : 상단의 메뉴라는 의미로 많이 씀
 function Navbar() {
     const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
-
+    const [userInfo, setUserInfo] = useState(null);
+    useEffect(() => {
+        async function fetchList() {
+            try {
+                const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setUserInfo(jsonData[0]);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchList();
+    }, []);
 
     return <nav>
         <div id="sidebar">
@@ -16,7 +29,12 @@ function Navbar() {
                 <div id="sidebarBox">
                     <div id="sidebarUserInfo">
                         <div id="userBox">
-                            <div id="userImg"></div>
+                            {userInfo != null ?  (
+                                <div id="userImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                            ) : (
+                                <div id="userInfoImg"></div>
+                            )}
+
                             <div id="userId">{userId}</div>
                         </div>
                         <div id="followingBox">
@@ -44,7 +62,7 @@ function Navbar() {
                         </ul>
                     </div>
                     <div id="sideBottom">
-                        <button  onClick={() => {
+                        <button onClick={() => {
                             window.location.href = `http://localhost:3000/posting?userId=${userId}`;
                         }}>글쓰기</button>
                         <div id="logOutBox">

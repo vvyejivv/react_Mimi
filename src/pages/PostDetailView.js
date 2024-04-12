@@ -9,6 +9,20 @@ function PostDetailView() {
     const userId = sessionStorage.getItem("userId");
     const { postNo } = useParams();
     const [postList, setPostList] = useState([]);
+    const [userInfo, setUserInfo] = useState(null);
+    useEffect(() => {
+        async function fetchList() {
+            try {
+                const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setUserInfo(jsonData[0]);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchList();
+    }, []);
     useEffect(() => {
         async function fetchList() {
             try {
@@ -101,7 +115,11 @@ function PostDetailView() {
                     <div id="detailBox">
                         <div id="detailUserInfoBox">
                             <div id="detailUserBox">
-                                <div id="detailUserImg"></div>
+                            {userInfo != null ? (
+                                <div id="userImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                            ) : (
+                                <div id="userInfoImg"></div>
+                            )}
                                 <div id="detailUserId">{postList.USERID}</div>
                             </div>
                             <div id="detailDate">{postList.CDATE}</div>

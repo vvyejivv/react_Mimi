@@ -77,11 +77,21 @@ body{
   gap : 20px;
   margin-bottom: 38px;
 }
-#userImg{
+#userInfoImg{
   width: 70px;
   height: 70px;
   border-radius: 50px;
   background-image: url('./img/profile4.png');
+}
+#userImg{
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+#userImg img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
 }
 #userId{
   font-size: 20px;

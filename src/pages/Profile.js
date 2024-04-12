@@ -9,17 +9,31 @@ function Profile() {
     const [userName, setUserName] = useState("");
     const [userIntro, setUserIntro] = useState("");
     const [userPostCnt, setUserPostCnt] = useState("");
-    console.log(userId);
+    const [userInfo, setUserInfo] = useState(null);
+    useEffect(() => {
+        async function fetchList() {
+            try {
+                const response = await fetch(`http://localhost:4000/profilePhoto.dox?userId=${userId}`);
+                const jsonData = await response.json();
+                console.log(jsonData);
+                setUserInfo(jsonData[0]);
+            } catch (error) {
+                console.error("!!error!!");
+            }
+        }
+        fetchList();
+    }, []);
     useEffect(() => {
         async function fetchList() {
             try {
                 const response = await fetch(`http://localhost:4000/postList.dox?userId=${userId}`);
                 const jsonData = await response.json();
+                console.log(jsonData);
                 setPostList(jsonData);
                 setUserIntro(jsonData[0].INTRO);
                 setUserPostCnt(jsonData[0].POSTCNT);
                 setUserName(jsonData[0].NAME);
-                console.log(jsonData);
+
             } catch (error) {
                 console.error("!!error!!");
             }
@@ -33,7 +47,11 @@ function Profile() {
                 <div id="profileTitleSmallBox">
                     <div id="leftTitleBox">
                         <div id="leftTitleSmallBox">
-                            <div id="profileUserImg"></div>
+                            {userInfo != null ? (
+                                <div id="userImg"><img src={`http://localhost:4000/${userInfo.FILENAME}`} alt="post image" /></div>
+                            ) : (
+                                <div id="userInfoImg"></div>
+                            )}
                             <div id="profileUserInfoBox">
                                 <div id="profileUserNameBox">
                                     <div id="profileNameTxt">{userName}</div>
@@ -56,13 +74,17 @@ function Profile() {
                 <div id="feedContainer" className="row">
                     {postList.map(item => (
                         <div id="feedBox" className="col-md-2" key={item.POSTNO}>
-                            <a href="#" onClick={()=>{
+                            <a href="#" onClick={() => {
                                 window.location.href = `http://localhost:3000/postDetailView/${item.POSTNO}`;
                             }}>
                                 <div id="feedSmallBox">
                                     <div id="feedUserInfo">
                                         <div id="feedUserInfoBox">
-                                            <div id="feedUserProfileImg"></div>
+                                            {item.USERPATH && item.USERPATH !== "null" ? (
+                                                <div id="userImg"><img src={`http://localhost:4000/${item.USERPATH}`} alt="post image" /></div>
+                                            ) : (
+                                                <div id="userInfoImg"></div>
+                                            )}
                                             <div id="feedUserId">{item.USERID}</div>
                                         </div>
                                         <div id="feedUserDate">{item.CDATE}</div>
@@ -72,9 +94,13 @@ function Profile() {
                                         <div id="feedTitleTxt">{item.TITLE}</div>
                                     </div>
                                     <div id="feedContentsBox">
-                                        <div id="feedContentsTxt">
+                                        <div id="postContents">
+                                            {item.PATH && item.PATH !== "null" && (
+                                                <div id="postPhoto"><img src={`http://localhost:4000/${item.PATH}`} alt="post image" /></div>
+                                            )}
                                             {item.CONTENTS}
                                         </div>
+                                       
                                     </div>
                                     <div id="feedLikesCmtBox">
                                         <div id="feedLikesCmtSmallBox">

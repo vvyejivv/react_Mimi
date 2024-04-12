@@ -112,7 +112,11 @@ function Posts() {
                         <div id="postSmallBox">
                             <div id="postTitleBox">
                                 <div id="postUser">
-                                    <div id="postUserImg"></div>
+                                    {item.USERPATH !== null && item.USERPATH !== undefined ? (
+                                        <div id="userImg"><img src={`http://localhost:4000/${item.USERPATH}`} alt="post image" /></div>
+                                    ) : (
+                                        <div id="postUserImg"></div>
+                                    )}
                                     <div id="postUserId"><a href="#" onClick={() => {
                                         window.location.href = `http://localhost:3000/userProfile/${item.USERID}`;
                                     }}>{item.USERID}</a></div>

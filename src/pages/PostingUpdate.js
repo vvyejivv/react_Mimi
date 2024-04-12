@@ -39,6 +39,7 @@ function Posting() {
                     alert("내용을 입력하세요.");
                     return;
                 }
+                // 사진도 수정 필요
                 const response = await fetch(`http://localhost:4000/postingUpdate.dox?title=${title}&contents=${contents}&userId=${userId}&postNo=${postNo}`);
                 const jsonData = await response.json();
                 console.log(jsonData.result);

@@ -24,7 +24,7 @@
 #leftTitleBox {
     width: 743.5px;
     height: 150px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #leftTitleSmallBox {
@@ -32,6 +32,7 @@
     height: 150px;
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 #profileUserImg {
@@ -109,7 +110,16 @@
     display: flex;
     gap: 20px;
 }
-
+#postPhoto{
+    width: 458px;
+    height: 338px;
+    margin-bottom: 10px;
+}
+#postPhoto img{
+    width: 458px;
+    height: 338px;
+    margin-bottom: 10px;
+}
 #feedBox {
     width: 640px;
     height: auto;

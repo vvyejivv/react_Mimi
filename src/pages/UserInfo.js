@@ -11,6 +11,7 @@ function UserInfo() {
     const [birth, setBirth] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [selectedFiles, setSelectedFiles] = useState([]); //파일 목록 추가
 
     useEffect(() => {
         async function fetchList() {
@@ -49,11 +50,77 @@ function UserInfo() {
     const fnUserEmail = (e) => {
         setEmail(e.target.value);
     }
+    //파일 저장
+    const handleFileUpload = (e) => {
+        const files = Array.from(e.target.files);
+        if (files.length > 3) {
+            // 파일 원하는 개수에 따라 수정
+            alert('최대 3개까지 파일을 업로드할 수 있습니다!');
+            return;
+        }
+        // selectedFiles에 저장
+        setSelectedFiles(files);
+    };
     const fnInfoUpdate = () => {
         async function fnUserInfoUpdate() {
             try {
-                let str = `pwd=${pwd}&name=${userName}&birth=${birth}&phone=${phone}&email=${email}&intro=${userIntro}&userId=${userId}`;
-                const response = await fetch(`http://localhost:4000/userInfoUpdate.dox?${str}`);
+                if (pwd == "") {
+                    alert("비밀번호를 입력해주세요.");
+                    return;
+                }
+                //파일 post방식
+                var map = {};
+                map.pwd = pwd;
+                map.name = userName;
+                map.birth = birth;
+                map.phone = phone;
+                map.email = email;
+                map.intro = userIntro;
+                map.userId = userId;
+                
+                console.log(map);
+                
+                //기존 파일명 현재시간 파일명으로 변경
+                const now = new Date();
+                const year = now.getFullYear().toString().slice(-2);
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                const timestamp = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+                   //파일 여러개 리스트에 저장
+                   let files = [];
+                   for (const file of selectedFiles) {
+                       const fileName = `${timestamp}_${file.name}`; // 저장되는 순간의 시간(YYMMDDHHmmss)을 파일 이름과 같이 저장     
+                       files.push({fileName : fileName, fileOrgName : file.name});   
+                       const imgformData = new FormData();
+                       imgformData.append('file', file, fileName); 
+                       try {
+                           const response = await fetch('http://localhost:4000/upload', {
+                               method: 'POST',
+                               body: imgformData
+                           });
+                           
+                           if (!response.ok) {
+                               throw new Error('이미지 업로드에 실패했습니다.');
+                           }
+                   
+                           const responseData = await response.json();
+                       } catch (error) {
+                           console.error('이미지 업로드 오류:', error.message);
+                           // 오류 처리
+                       }
+                   }
+                   map.files = files;
+                const response = await fetch(`http://localhost:4000/userInfoUpdate.dox`,{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(map)
+                });
                 const jsonData = await response.json();
                 if (jsonData.result == "success") {
                     alert(jsonData.msg);
@@ -87,7 +154,7 @@ function UserInfo() {
 
                     <div className="userInfo_flex">
                         <div>프로필 사진</div>
-                        <input type="file"></input>
+                        <input type="file" multiple onChange={handleFileUpload}></input>
                     </div>
                     <div className="userInfo_flex">
                         <div>소개글</div>
@@ -101,13 +168,14 @@ function UserInfo() {
                         <div>비밀번호 </div>
                         <input type="password" onChange={fnUserPwd} value={pwd} ></input>
                     </div>
-                    {pwd == "" && <div style={{marginBottom : "5px",
-                                            color : "red",
-                                            fontSize : "13px",
-                                            display : "flex",
-                                            alignItems : "center",
-                                            justifyContent : "center",
-                                            }}><span>*</span> 비밀번호를 입력해주세요!</div>}
+                    {pwd == "" && <div style={{
+                        marginBottom: "5px",
+                        color: "red",
+                        fontSize: "13px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}><span>*</span> 비밀번호를 입력해주세요!</div>}
                     <div className="userInfo_flex">
                         <div>이름 </div>
                         <input type="text" onChange={fnUserName} value={userName}></input>
