@@ -8,26 +8,83 @@
     width: 1300px;
     height: auto;
 }
+
 #userInfo_title{
-    font-size: 16px;
+    font-size: 25px;
+    font-weight: 700;
     color: #222222;
+    margin-bottom: 10px;
+    text-align: center;
+
 }
 #userInfoSmallBox{
-    width: 1300px;
+    width: 600px;
     height: auto;
     border-radius: 15px;
     border: 1px solid #EDEDED;
     padding: 30px 30px;
+ 
 }
 .userInfo_flex{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 500;
 }
 #userInfo_pwdBox{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     border-radius: 5px;
+    margin-bottom: 5px;
 }
+#userInfo_updateBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+#userInfo_updateBtn{
+    width: 80px;
+    padding: 10px 5px;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    color: #FFFFFF;
+    background-color: #F56363;
+    text-align: center;
+    border-radius: 4px;
+}
+#userInfo_Btn{
+    width: 80px;
+    padding: 10px 10px;
+    font-size: 13px;
+    color: #5F5F5F;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #EDEDED;
+}
+::-webkit-input-placeholder { /* 웹킷 브라우저(크롬, 사파리 등)에서 작동 */
+    color: #9E9E9E;
+ }
+ #introBox{
+    width: 300px;
+    height: 100px;
+    border-radius: 4px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #222222;
+ }
+ input{    
+    border-radius: 4px;
+    border: 1px solid #EDEDED;
+    background-color: #FFFFFF;
+    color: #222222;
+    font-size: 14px;
+ }

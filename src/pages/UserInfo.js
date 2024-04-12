@@ -80,46 +80,56 @@ function UserInfo() {
             }}>←</div>
             {/* 내 정보에 프로필 사진 첨부 해야함 */}
             <div id="userInfoSmallBox">
-                <div id="userInfo_title">내 정보 수정</div>
 
-                <div className="userInfo_flex">
-                    <div>프로필 사진</div>
-                    <input type="file"></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>소개글</div>
-                    <input type="text" onChange={fnUserIntro} value={userIntro} ></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>아이디 </div>
-                    <input type="text" value={userId} disabled></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>비밀번호 </div>
-                    <input type="password" onChange={fnUserPwd} value={pwd} ></input>
-                </div>
-                {pwd == "" && <div><span>*</span> 비밀번호를 입력해주세요!</div>}
-                <div className="userInfo_flex">
-                    <div>이름 </div>
-                    <input type="text" onChange={fnUserName} value={userName}></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>생년월일 </div>
-                    <input type="text" placeholder="ex : 19971025" onChange={fnUserBirth} value={birth}></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>연락처 </div>
-                    <input type="text" placeholder="ex : 0100000000" onChange={fnUserPhone} value={phone}></input>
-                </div>
-                <div className="userInfo_flex">
-                    <div>이메일 </div>
-                    <input type="text" placeholder="ex : abcd@abcd.com" onChange={fnUserEmail} value={email}></input>
-                </div>
+
+                <div id="userInfo_title">내 정보 수정</div>
                 <div>
-                    <button onClick={fnInfoUpdate}>수정하기</button>
-                    <button onClick={() => {
-                        window.history.back();
-                    }}>취소</button>
+
+                    <div className="userInfo_flex">
+                        <div>프로필 사진</div>
+                        <input type="file"></input>
+                    </div>
+                    <div className="userInfo_flex">
+                        <div>소개글</div>
+                        <input type="text" onChange={fnUserIntro} value={userIntro} id="introBox" ></input>
+                    </div>
+                    <div className="userInfo_flex">
+                        <div>아이디 </div>
+                        <input type="text" value={userId} disabled></input>
+                    </div>
+                    <div id="userInfo_pwdBox">
+                        <div>비밀번호 </div>
+                        <input type="password" onChange={fnUserPwd} value={pwd} ></input>
+                    </div>
+                    {pwd == "" && <div style={{marginBottom : "5px",
+                                            color : "red",
+                                            fontSize : "13px",
+                                            display : "flex",
+                                            alignItems : "center",
+                                            justifyContent : "center",
+                                            }}><span>*</span> 비밀번호를 입력해주세요!</div>}
+                    <div className="userInfo_flex">
+                        <div>이름 </div>
+                        <input type="text" onChange={fnUserName} value={userName}></input>
+                    </div>
+                    <div className="userInfo_flex">
+                        <div>생년월일 </div>
+                        <input type="text" placeholder="ex : 19971025" onChange={fnUserBirth} value={birth}></input>
+                    </div>
+                    <div className="userInfo_flex">
+                        <div>연락처 </div>
+                        <input type="text" placeholder="ex : 0100000000" onChange={fnUserPhone} value={phone}></input>
+                    </div>
+                    <div className="userInfo_flex">
+                        <div>이메일 </div>
+                        <input type="text" placeholder="ex : abcd@abcd.com" onChange={fnUserEmail} value={email}></input>
+                    </div>
+                    <div id="userInfo_updateBox">
+                        <button id="userInfo_updateBtn" onClick={fnInfoUpdate}>수정하기</button>
+                        <button id="userInfo_Btn" onClick={() => {
+                            window.history.back();
+                        }}>취소</button>
+                    </div>
                 </div>
             </div>
         </div>
