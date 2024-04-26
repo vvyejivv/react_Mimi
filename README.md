@@ -12,5 +12,14 @@
       </div> 
         <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ✔ 개발 기간 </h2> 
         <li>2024.04.03 ~ 2024.04.11</li>
+        <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 사용 언어 </h2> 
+        <ul> 툴
+            <li>Visual Studio Code</li>            
+            <li>HeidiSql</li>            
+        </ul>
+        <ul> 언어
+            <li>dd</li>            
+            <li>HeidiSql</li>            
+        </ul>
 </div>
     
