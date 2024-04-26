@@ -30,7 +30,7 @@
             <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
         </ul>
      <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 화면 및 기능 설명 </h2>
-    <ul>로그인 / 로그아웃</ul>
-    
+    <ul><b>로그인 / 로그아웃</b></ul>
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/6a9c432a-1756-40f5-8f36-0b5a22385743">
 </div>
     
