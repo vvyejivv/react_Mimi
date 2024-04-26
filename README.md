@@ -13,13 +13,20 @@
         <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ✔ 개발 기간 </h2> 
         <li>2024.04.03 ~ 2024.04.11</li>
         <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 사용 언어 </h2> 
-        <ul> 툴
+        <ul> ✏툴
             <li>Visual Studio Code</li>            
             <li>HeidiSql</li>            
         </ul>
-        <ul> 언어
-            <li>dd</li>            
-            <li>HeidiSql</li>            
+        <ul> ✏언어
+            <div style="text-align: left;">
+            <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+            <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
+            <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+            <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
+            <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white">
+            <br/>
+            <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+            <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
         </ul>
 </div>
     
