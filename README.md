@@ -33,7 +33,11 @@
     <h3>1. 로그인 / 로그아웃</h3>
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/928c72b8-69e8-412f-9ed4-e320d9c8ffb3">
     <br />
-    <div>아이디, 비밀번호 유효성 검사 기능 구현, 로그인 성공 시 세션 부여</div>
+    <div>- 아이디, 비밀번호 유효성 검사 기능 구현, 로그인 성공 시 세션 부여</div>
+    <h3>2. 회원가입</h3>
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/ad30cbb4-5bb2-4cf3-a27b-7c6f64baa0b8">
+    <br />
+    <div>- 아이디 중복 여부 기능 구현</div>
    
 </div>
     
