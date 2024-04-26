@@ -32,10 +32,10 @@
      <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 화면 및 기능 설명 </h2>
     <ul><b>1. 로그인 / 로그아웃</b></ul>
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/928c72b8-69e8-412f-9ed4-e320d9c8ffb3">
+    <br />
     <li>아이디, 비밀번호 유효성 검사 기능 구현, 로그인 성공 시 세션 부여</li>
     <ul><b>2. 회원가입 </b></ul>
     <li>아이디 중복 여부 기능 구현</li>
-    <br />
     <ul><b>3. Home </b></ul>
     <li>가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및   댓글 작성 기능 구현</li>
     <br />
