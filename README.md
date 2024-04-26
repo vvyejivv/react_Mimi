@@ -31,7 +31,7 @@
         </ul>
      <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 화면 및 기능 설명 </h2>
     <h3>1. 로그인 / 로그아웃</h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/f9e4d2d7-7433-4f43-bdc6-a9496998b0f2">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/f9e4d2d7-7433-4f43-bdc6-a9496998b0f2" style="width:300px;">
     <br />
     <div>- 아이디, 비밀번호 유효성 검사 기능 구현, 로그인 성공 시 세션 부여</div>
     <h3>2. 회원가입</h3>
