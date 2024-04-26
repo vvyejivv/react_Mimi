@@ -31,6 +31,6 @@
         </ul>
      <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 화면 및 기능 설명 </h2>
     <ul><b>로그인 / 로그아웃</b></ul>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/6a9c432a-1756-40f5-8f36-0b5a22385743">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/928c72b8-69e8-412f-9ed4-e320d9c8ffb3">
 </div>
     
