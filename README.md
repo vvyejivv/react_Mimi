@@ -43,6 +43,13 @@
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/fb10de44-77c9-417e-bfa8-49da5c139077">
     <br />
     <div>- 가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및 댓글 작성 기능 구현</div>    
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
+    <div>
+        짧은 React 학습 및 프로젝트 기간으로 아쉬움이 남는 프로젝트였습니다.<br />
+        하지만 기존에 사용했던 언어들과 팀 프로젝트의 경험으로 빠르게 기본적인 CRUD 작업할 수 있었고, React의 장점인 빠른 Rendering을 쉽게 체감할 수 있었습니다. <br />
+        그리고 DB 연결하여 파일 업로드 등 구현 가능한 기능들을 최대한 설계하여 주어진 기간 안에 프로젝트를 완료할 수 있었습니다.<br />
+        React를 조금 더 공부하여 생각했던 기능들을 더 추가하고 싶습니다.
+    </div>
    
 </div>
     
