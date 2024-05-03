@@ -53,7 +53,7 @@
     <div>- 프로필 사진 수정 가능(사진 첨부 기능 구현)</div>
     <div>- 프로필 내용 수정 기능 구현</div>
     <h3>6. DB 연결</h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/13dd101b-3732-4b1d-bd2c-27b38b7fd182" style="width : 500px; height : 500px;">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/70d485cd-aa74-4eaa-b0ee-62768cdfca5c" style="width : 500px; height : 500px;">
     <div>- Node.js -> DB 연결</div>
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
     <div>
