@@ -31,16 +31,16 @@
         </ul>
      <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> ⭐ 화면 및 기능 설명 </h2>
     <h3>1. 로그인 / 로그아웃</h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/f9e4d2d7-7433-4f43-bdc6-a9496998b0f2" style="width:500px;">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/ab9a55b8-7f04-4ce1-959c-a7061c81d4e9" style="width:800px;">
     <br />
     <div>- 아이디, 비밀번호 유효성 검사 기능 구현, 로그인 성공 시 세션 부여</div>
     <h3>2. 회원가입</h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/ad30cbb4-5bb2-4cf3-a27b-7c6f64baa0b8" style="width : 800px;">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/188a7110-9042-464e-9f28-1bb2662728a5" style="width : 800px;">
     <br />
     <div>- 아이디 중복 여부 기능 구현</div>    
     <div>- 전체 내용 입력 후 회원가입 가능 </div>
     <h3>3. Home </h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/fb10de44-77c9-417e-bfa8-49da5c139077" style="width : 800px;">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/2d64e967-3fa6-40e9-ae57-d1c39100a3ca" style="width : 800px;">
     <br />
     <div>- 가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및 댓글 작성 기능 구현</div>
     <h3>4. 내 프로필</h3>
