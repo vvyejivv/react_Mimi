@@ -48,9 +48,13 @@
     <br />
     <div>- 작성한 글 목록 확인 가능</div>
     <h3>5. 프로필 수정</h3>
-    <img src="">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/75b02476-e87f-49b9-bdb2-ff8837f1fcd1">
     <br />
-    <div></div>
+    <div>- 프로필 사진 수정 가능(사진 첨부 기능 구현)</div>
+    <div>- 프로필 내용 수정 기능 구현</div>
+    <h3>6. DB 연결</h3>
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/13dd101b-3732-4b1d-bd2c-27b38b7fd182">
+    <div>- Node.js -> DB 연결</div>
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
     <div>
         짧은 React 학습 및 프로젝트 기간으로 아쉬움이 남는 프로젝트였습니다.<br />
