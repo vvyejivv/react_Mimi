@@ -40,7 +40,7 @@
     <div>- 아이디 중복 여부 기능 구현</div>    
     <div>- 전체 내용 입력 후 회원가입 가능 </div>
     <h3>3. Home </h3>
-    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/2d64e967-3fa6-40e9-ae57-d1c39100a3ca" style="width : 800px;">
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/38a0b875-9267-41f3-9724-531fbf4b2d04" style="width : 800px;">
     <br />
     <div>- 가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및 댓글 작성 기능 구현</div>
     <h3>4. 내 프로필</h3>
