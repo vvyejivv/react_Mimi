@@ -42,7 +42,15 @@
     <h3>3. Home </h3>
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/fb10de44-77c9-417e-bfa8-49da5c139077">
     <br />
-    <div>- 가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및 댓글 작성 기능 구현</div>    
+    <div>- 가입한 회원들이 작성하여 DB에 저장된 전체 게시글, 사진 표시 및 댓글 작성 기능 구현</div>
+    <h3>4. 내 프로필</h3>
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/7ebbca27-27ac-483a-8ce2-039f47af222f">
+    <br />
+    <div>- 작성한 글 목록 확인 가능</div>
+    <h3>5. 프로필 수정</h3>
+    <img src="">
+    <br />
+    <div></div>
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
     <div>
         짧은 React 학습 및 프로젝트 기간으로 아쉬움이 남는 프로젝트였습니다.<br />
