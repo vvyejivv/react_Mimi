@@ -52,7 +52,10 @@
     <br />
     <div>- 프로필 사진 수정 가능(사진 첨부 기능 구현)</div>
     <div>- 프로필 내용 수정 기능 구현</div>
-    <h3>6. DB 연결</h3>
+    <h3>6. 글 작성 </h3>
+    <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/16c399b1-fb6d-4af4-a259-5120140e469b" style="width : 800px;">
+    <div>- 게시글 작성 기능 (사진 첨부 포함)</div>
+    <h3>7. DB 연결</h3>
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/70d485cd-aa74-4eaa-b0ee-62768cdfca5c" style="width : 800px;">
     <div>- Node.js -> DB 연결</div>
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
