@@ -57,7 +57,7 @@
     <div>- 게시글 작성 기능 (사진 첨부 포함)</div>
     <h3>7. DB 연결</h3>
     <img src="https://github.com/vvyejivv/react_sample2/assets/153081833/70d485cd-aa74-4eaa-b0ee-62768cdfca5c" style="width : 800px;">
-    <div>- Node.js -> DB 연결</div>
+    <div>- Node.js express 서버 -> DB 연결</div>
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 😁 프로젝트 후기 </h2> 
     <div>
         짧은 React 학습 및 프로젝트 기간으로 아쉬움이 남는 프로젝트였습니다.<br />
